@@ -1,0 +1,157 @@
+.wrap {
+  width: 1280px;
+  height: 600px;
+  margin: 80px auto;
+  overflow: hidden;
+}
+.wrap .left-content {
+  width: 76%;
+  float: left;
+}
+.wrap .left-content .head {
+  height: 60px;
+  background-color: #eee;
+}
+.wrap .left-content .content-video {
+  height: 540px;
+  width: 100%;
+  position: relative;
+  background-color: #aaa;
+}
+.wrap .left-content .content-video video {
+  width: 100%;
+  max-height: 540px;
+}
+.wrap .left-content .content-video .video-controls {
+  height: 40px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #eee;
+  display: none;
+}
+.wrap .left-content .content-video .video-controls > div {
+  float: left;
+}
+.wrap .left-content .content-video .video-controls .voice-control {
+  width: 60%;
+}
+.wrap .left-content .content-video .video-controls .voice-control span {
+  line-height: 40px;
+  vertical-align: top;
+}
+.wrap .left-content .content-video .video-controls .voice-control .voice-wrap {
+  display: inline-block;
+  line-height: 40px;
+  height: 40px;
+  width: 60%;
+}
+.wrap .left-content .content-video .video-controls .voice-control .voice-wrap .el-slider {
+  margin-top: 2px;
+}
+.wrap .left-content .content-video .video-controls .flower-control,
+.wrap .left-content .content-video .video-controls .problem-control,
+.wrap .left-content .content-video .video-controls .full-play-control,
+.wrap .left-content .content-video .video-controls .full-control {
+  width: 10%;
+  height: 100%;
+}
+.wrap .left-content .content-video .video-controls .flower-control .flower-content {
+  display: none;
+  width: 100%;
+  height: 50px;
+  position: absolute;
+  bottom: 40px;
+  background-color: #fff;
+  left: 0;
+}
+.wrap .left-content .content-video .video-controls .flower-control .flower-content .flower {
+  float: left;
+  width: 15%;
+}
+.wrap .left-content .content-video .video-controls .flower-control .flower-content .flower img {
+  width: 50%;
+}
+.wrap .left-content .content-video .video-controls .flower-control .flower-content .flower .flower-price span {
+  color: red;
+}
+.wrap .left-content .content-video .video-controls .flower-control .flower-content .flower.active {
+  background-color: #aaa;
+}
+.wrap .left-content .content-video .video-controls .flower-control .flower-content .flower-confirm {
+  height: 100%;
+  width: 30%;
+  float: right;
+  line-height: 50px;
+}
+.wrap .left-content .content-video .video-controls .flower-control .flower-content .flower-confirm p {
+  float: left;
+}
+.wrap .left-content .content-video .video-controls .flower-control .flower-content .flower-confirm button {
+  float: left;
+  height: 80%;
+  margin-left: 20px;
+}
+.wrap .left-content .content-video .video-controls button {
+  height: 100%;
+}
+.wrap .right-content {
+  width: 23%;
+  float: left;
+}
+.wrap .right-content .head {
+  height: 60px;
+  background-color: #aaa;
+}
+.wrap .right-content .head #people-num {
+  float: left;
+  width: 50%;
+}
+.wrap .right-content .head #people-num > span {
+  line-height: 60px;
+}
+.wrap .right-content .head .im-controls {
+  float: right;
+  margin-right: 10px;
+  height: 100%;
+}
+.wrap .right-content .head .im-controls button {
+  margin-top: 15px;
+}
+.wrap .right-content .content-im {
+  height: 480px;
+}
+.wrap .right-content .foot {
+  height: 60px;
+  background-color: #eee;
+}
+.wrap .right-content .foot > div {
+  float: left;
+}
+.wrap .right-content .foot #expression {
+  margin: 10px 10px;
+  width: 20%;
+}
+.wrap .right-content .foot #inputBar {
+  width: 45%;
+  margin-top: 10px;
+}
+.wrap .right-content .foot #inputBar textarea {
+  width: 100%;
+  resize: none;
+  height: 30px;
+}
+.wrap .right-content .foot #send {
+  width: 20%;
+  margin: 10px 10px;
+}
+.clearfix {
+  overflow: auto;
+  zoom: 1;
+}
+.full-screen {
+  width: 100%!important;
+}
+[v-cloak] {
+  display: none;
+}

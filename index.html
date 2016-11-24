@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--<meta name="viewport" content="width=device-width">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title></title>
+    <link rel="stylesheet" href="public/css/reset.css"/>
+    <link rel="stylesheet" href="public/css/index.css"/>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="public/css/lib/element-index.css">
+</head>
+<body>
+<div id="app" class="wrap" v-cloak>
+    <div class="left-content">
+        <div class="head">
+            <h1 style="color: red;">讲座标题讲座标题讲座标题讲座标题讲座标题</h1>
+        </div>
+        <div class="content-video">
+            <video id="video"    src="public/index.mp4"></video>
+            <div class="video-controls" id="video-controls">
+                <div class="voice-control">
+                    <span>voice:</span>
+                    <div class="voice-wrap">
+                        <el-slider v-model="voice"></el-slider>
+                    </div>
+                </div>
+                <div class="flower-control" v-flower>
+                    <el-button class="show-flower">献花</el-button>
+                    <div class="flower-content">
+                        <div class="flower">
+                            <img src="" alt=""/>
+                            <p class="flower-name">
+                                蓝色妖姬
+                            </p>
+                            <p class="flower-price">
+                                <span>100</span>
+                                金币
+                            </p>
+                        </div>
+                        <div class="flower">
+                            <img src="" alt=""/>
+                            <p class="flower-name">
+                                蓝色妖姬
+                            </p>
+                            <p class="flower-price">
+                                <span>100</span>
+                                金币
+                            </p>
+                        </div>
+                        <div class="flower">
+                            <img src="" alt=""/>
+                            <p class="flower-name">
+                                蓝色妖姬
+                            </p>
+                            <p class="flower-price">
+                                <span>100</span>
+                                金币
+                            </p>
+                        </div>
+                        <div class="flower-confirm">
+                            <p>我的金币余额：<span>1586</span></p>
+                            <el-button @click="sendFlower">
+                                确定
+                            </el-button>
+                        </div>
+                    </div>
+                </div>
+                <div class="problem-control">
+                    <el-button>题目获取</el-button>
+                </div>
+                <div class="full-play-control">
+                    <el-button>播放器全屏</el-button>
+                </div>
+                <div class="full-control">
+                    <el-button>网页全屏</el-button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="right-content">
+        <div class="head">
+            <div id="people-num">
+                <span>在线听众：966人</span>
+            </div>
+            <div class="im-controls">
+                <el-button>清屏</el-button>
+                <el-button>锁屏</el-button>
+            </div>
+        </div>
+        <div class="content-im">
+
+        </div>
+        <div class="foot">
+            <div id="expression">
+                <el-button>表情</el-button>
+            </div>
+            <div id="inputBar">
+                <textarea></textarea>
+            </div>
+            <div id="send">
+                <el-button>发送</el-button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="public/js/lib/jquery-1.11.3.min.js"></script>
+<!-- 先引入 Vue -->
+<script src="public/js/lib/vue.js"></script>
+<!-- 引入组件库 -->
+<script src="public/js/lib/element-index.js"></script>
+
+<script src="public/js/fullscreen.js"></script>
+<script src="public/js/v-directives.js"></script>
+<script src="public/js/index.js"></script>
+</html>
