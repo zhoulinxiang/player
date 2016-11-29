@@ -8,13 +8,26 @@
     var app=new Vue({
         el: '#app',
         data: {
-            voice:50
+            voice:50,
+            route:'im',
+        //    im,flower,question
+            alert:'',
+        //hongbao,
         },
         methods:{
-            sendFlower:function(){
+            sendFlower:function(type){
                 console.log('send flower')
+                if(type=='touch'){
+                    this.route='im';
+                }
                 //sole.log(this.voice);
             },
+            switchRoute:function(routetmp){
+                this.route=routetmp;
+            },
+            switchAlert:function(alerttmp){
+                this.alert=alerttmp;
+            }
         },
 
         mounted:function(){
@@ -27,26 +40,29 @@
             appContent=$('#app');
             fullPlayer=$('.full-play-control');
             fullApp=$('.full-control');
+            if(IsPC()){
+                fullPlayer.on('click',function(){
+                    console.log('click fullPlayer');
+                    fullscreen(leftContent[0]);
+                });
+                fullApp.on('click',function(){
+                    console.log('click fullApp');
+                    fullscreen(appContent[0]);
+                });
+                //video控制器滑入滑出
+                $(video).parent().mouseenter(
+                    function () {
+                        videoControls.stop(true, false).slideDown();
+                    }
+                );
+                $(video).parent().mouseleave(
+                    function () {
+                        videoControls.stop(true, false).slideUp();
+                    }
+                )
+            }
 
-            fullPlayer.on('click',function(){
-                console.log('click fullPlayer');
-                fullscreen(leftContent[0]);
-            });
-            fullApp.on('click',function(){
-                console.log('click fullApp');
-                fullscreen(appContent[0]);
-            });
-            //video控制器滑入滑出
-            $(video).parent().mouseenter(
-                function () {
-                    videoControls.stop(true, false).slideDown();
-                }
-            );
-            $(video).parent().mouseleave(
-                function () {
-                    videoControls.stop(true, false).slideUp();
-                }
-            )
+
 
 
 

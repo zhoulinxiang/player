@@ -1,192 +1,199 @@
-
 @grey: #eee;
 @grey1: #111;
 @grey2: #aaa;
 
-@height:600px;
-@height-top:60px;
-@height-controls:40px;
-@leftWith:960px;
-@rightWidth:300px;
+@height: 600px;
+@height-top: 60px;
+@height-controls: 40px;
+@leftWith: 960px;
+@rightWidth: 300px;
+@media screen and (min-width: 800px) {
+  body {
+    //position:relative;
+    //display: flex;
+    //align-items: center;
+  }
 
-body{
-  //position:relative;
-  //display: flex;
-  //align-items: center;
-}
-.wrap{
-  width: @leftWith+@rightWidth+20px;
-  //width: 80%;
-  height: @height;
-  margin: 80px auto;
-  overflow: hidden;
-  .left-content{
-    //width: @leftWith;
-    width: 76%;
-    float: left;
-    .head{
-      height: @height-top;
-      background-color: @grey;
-    }
-    .content-video{
-      height: 540px;
+  .wrap {
+    width: @leftWith+@rightWidth+20px;
+    //width: 80%;
+    height: @height;
+    margin: 80px auto;
+    overflow: hidden;
+    .left-content {
       //width: @leftWith;
-      width: 100%;
-      position: relative;
-      background-color: @grey2;
-      video{
-        //height: 100%;
-        //margin:0 auto;
-        width: 100%;
-        max-height: 540px;
-      }
-      .video-controls{
-        height: @height-controls;
-        position: absolute;
-        bottom: 0;
-        width: 100%;
+      width: 76%;
+      float: left;
+      .head {
+        height: @height-top;
         background-color: @grey;
-        display: none;
-        >div{
-          //display: inline-block;
+      }
+      .content-video {
+        height: 540px;
+        //width: @leftWith;
+        width: 100%;
+        position: relative;
+        background-color: @grey2;
+        video {
+          //height: 100%;
+          //margin:0 auto;
+          width: 100%;
+          max-height: 540px;
+        }
+        .video-controls {
+          height: @height-controls;
+          position: absolute;
+          bottom: 0;
+          width: 100%;
+          background-color: @grey;
+          display: none;
+          > div {
+            //display: inline-block;
+            float: left;
+          }
+          .voice-control {
+            width: 60%;
+            //line-height: 40px;
+            //vertical-align: middle;
+
+            span {
+              //display: inline-block;
+              //height: @height-controls;
+              line-height: 40px;
+              vertical-align: top;
+            }
+            .voice-wrap {
+              display: inline-block;
+              line-height: @height-controls;
+              height: @height-controls;
+              width: 60%;
+              .el-slider {
+                margin-top: 2px;
+                //height: 100%;
+              }
+            }
+          }
+          .flower-control, .problem-control, .full-play-control, .full-control {
+            width: 10%;
+            height: 100%;
+          }
+          .flower-control {
+            .flower-content {
+              display: none;
+              width: 100%;
+              height: 50px;
+              position: absolute;
+              bottom: @height-controls;
+              background-color: #fff;
+              left: 0;
+              .flower {
+                float: left;
+                width: 15%;
+                img {
+                  width: 50%;
+                }
+                .flower-price span {
+                  color: red;
+                }
+              }
+              .flower.active {
+                background-color: @grey2;
+              }
+              .flower-confirm {
+                height: 100%;
+                width: 30%;
+                float: right;
+                //line-height: 50px;
+                p {
+                  float: left;
+                }
+                button {
+                  float: left;
+                  height: 80%;
+                  margin-left: 20px;
+                }
+              }
+            }
+          }
+          button {
+            height: 100%;
+          }
+        }
+      }
+
+    }
+    .right-content {
+      //width: @rightWidth;
+      width: 23%;
+      float: left;
+      .head {
+        height: @height-top;
+        background-color: @grey2;
+        #people-num {
+          float: left;
+          width: 50%;
+          > span {
+            line-height: @height-top;
+          }
+        }
+
+        .im-controls {
+          float: right;
+          margin-right: 10px;
+          height: 100%;
+          button {
+            margin-top: 15px;
+            //height: 100%;
+          }
+        }
+
+      }
+      .content-im {
+        height: 540px-@height-top;
+
+      }
+      .foot {
+        height: @height-top;
+        background-color: @grey;
+        > div {
           float: left;
         }
-        .voice-control{
-          width: 60%;
-          //line-height: 40px;
-          //vertical-align: middle;
-
-          span{
-            //display: inline-block;
-            //height: @height-controls;
-            line-height: 40px;
-            vertical-align: top;
-          }
-          .voice-wrap{
-            display: inline-block;
-            line-height: @height-controls;
-            height: @height-controls;
-            width: 60%;
-            .el-slider{
-              margin-top: 2px;
-              //height: 100%;
-            }
-          }
+        #expression {
+          margin: 10px 10px;
+          width: 20%;
         }
-        .flower-control,.problem-control,.full-play-control,.full-control{
-          width: 10%;
-          height: 100%;
-        }
-        .flower-control{
-          .flower-content{
-            display: none;
+        #inputBar {
+          width: 45%;
+          margin-top: 10px;
+          textarea {
             width: 100%;
-            height: 50px;
-            position: absolute;
-            bottom: @height-controls;
-            background-color: #fff;
-            left: 0;
-            .flower{
-              float: left;
-              width: 15%;
-              img{
-                width: 50%;
-              }
-              .flower-price span{
-                color: red;
-              }
-            }
-            .flower.active{
-              background-color: @grey2;
-            }
-            .flower-confirm{
-              height: 100%;
-              width: 30%;
-              float: right;
-              line-height: 50px;
-              p{
-                float: left;
-              }
-              button{
-                float: left;
-                height: 80%;
-                margin-left: 20px;
-              }
-            }
+            resize: none;
+            height: 30px;
           }
         }
-        button{
-          height: 100%;
+        #send {
+          width: 20%;
+          margin: 10px 10px;
         }
-      }
-    }
 
+      }
+
+    }
   }
-  .right-content{
-    //width: @rightWidth;
-    width: 23%;
-    float: left;
-    .head{
-      height: @height-top;
-      background-color: @grey2;
-      #people-num{
-        float: left;
-        width: 50%;
-        >span{
-          line-height: @height-top;
-        }
-      }
 
-      .im-controls{
-        float: right;
-        margin-right: 10px;
-        height:100%;
-        button {
-          margin-top: 15px;
-          //height: 100%;
-        }
-      }
-
-    }
-    .content-im{
-      height: 540px-@height-top;
-
-    }
-    .foot{
-      height: @height-top;
-      background-color: @grey;
-      >div{
-        float: left;
-      }
-      #expression{
-        margin: 10px 10px;
-        width: 20%;
-      }
-      #inputBar{
-        width: 45%;
-        margin-top: 10px;
-        textarea{
-          width: 100%;
-          resize: none;
-          height: 30px;
-        }
-      }
-      #send{
-        width: 20%;
-        margin: 10px 10px;
-      }
-
-    }
-
+  .clearfix {
+    overflow: auto;
+    zoom: 1;
   }
-}
-.clearfix {
-  overflow: auto;
-  zoom: 1;
-}
-.full-screen{
-  width: 100%!important;
-}
-[v-cloak] {
-  display: none;
+
+  .full-screen {
+    width: 100% !important;
+  }
+
+  [v-cloak] {
+    display: none;
+  }
+  .just-in-touch{
+    display: none;
+  }
 }

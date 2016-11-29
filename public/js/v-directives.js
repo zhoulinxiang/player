@@ -5,7 +5,7 @@ Vue.directive('flower', {
         var flowerContent=el.find('.flower-content');
         //console.log(flowerButton);
         var flowers=el.find('.flower');
-        var flowerComfirm=el.find('.flower-confirm button');
+        var flowerComfirm=el.find('.flower-confirm');
         //console.log(flowerControl);
 
         //献花页面滑入滑出控制
@@ -22,6 +22,7 @@ Vue.directive('flower', {
             //console.log(e);
             $(e.currentTarget).addClass('active');
         });
+        //console.log(flowerComfirm);
         //确认送花按钮
         flowerComfirm.on('click',function(){
             $(flowers).removeClass('active');

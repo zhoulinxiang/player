@@ -1,0 +1,184 @@
+@media screen and (max-width: 800px) and (orientation: portrait) {
+  html,
+  body {
+    height: 100%;
+  }
+  #app {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  #app .left-content {
+    width: 100%;
+    height: auto;
+  }
+  #app .left-content .head {
+    background-color: #eee;
+    opacity: 0.5;
+    height: 20px;
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+  }
+  #app .left-content .head h1 {
+    text-align: center;
+  }
+  #app .left-content .content-video {
+    height: auto;
+  }
+  #app .left-content .content-video #video {
+    width: 100%;
+  }
+  #app .left-content .content-video .video-controls {
+    display: none;
+  }
+  #app .right-wrap {
+    position: relative;
+    flex: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  #app .right-wrap .alert-hongbao {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(100, 100, 100, 0.3);
+  }
+  #app .right-wrap .alert-hongbao .content-hongbao {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 30%;
+    width: 50%;
+  }
+  #app .right-wrap .alert-hongbao .content-hongbao .hongbao-button {
+    display: flex;
+    justify-content: center;
+  }
+  #app .right-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  #app .right-content .head {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    background-color: #eee;
+  }
+  #app .right-content .head #people-num {
+    flex: 1;
+  }
+  #app .right-content .head .im-controls {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+  }
+  #app .right-content .content-im {
+    flex: 6;
+    height: auto;
+  }
+  #app .right-content .foot {
+    flex: 1;
+    display: flex;
+    background-color: #eee;
+    justify-content: space-around;
+    align-items: center;
+  }
+  #app .right-content .foot .flower-control {
+    flex: 1;
+    display: block !important;
+    margin: 0 5px;
+  }
+  #app .right-content .foot .flower-control .flower-content {
+    display: none;
+  }
+  #app .right-content .foot #expression {
+    flex: 1;
+    margin: 0 5px;
+  }
+  #app .right-content .foot #inputBar {
+    flex: 7;
+    margin: 0 5px;
+  }
+  #app .right-content .foot #inputBar textarea {
+    width: 100%;
+    resize: none;
+  }
+  #app .right-content .foot #send {
+    flex: 1;
+    margin: 0 5px;
+  }
+  #app .right-content-flower {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  #app .right-content-flower .head {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #eee;
+  }
+  #app .right-content-flower .content-im {
+    flex: 6;
+    display: flex;
+  }
+  #app .right-content-flower .content-im .flower {
+    width: 33%;
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  #app .right-content-flower .content-im .flower.active {
+    background-color: #aaa;
+  }
+  #app .right-content-flower .foot {
+    flex: 1;
+    display: flex;
+    background-color: #eee;
+    justify-content: space-around;
+    align-items: center;
+  }
+  #app .right-content-flower .foot .flower-control {
+    flex: 1;
+    display: block !important;
+    margin: 0 5px;
+  }
+  #app .right-content-flower .foot .flower-control .flower-content {
+    display: none;
+  }
+  #app .right-content-flower .foot #expression {
+    flex: 1;
+    margin: 0 5px;
+  }
+  #app .right-content-flower .foot #inputBar {
+    flex: 7;
+    margin: 0 5px;
+  }
+  #app .right-content-flower .foot #inputBar textarea {
+    width: 100%;
+    resize: none;
+  }
+  #app .right-content-flower .foot #send {
+    flex: 1;
+    margin: 0 5px;
+  }
+  [v-cloak] {
+    display: none;!important;
+  }
+}

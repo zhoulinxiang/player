@@ -5,34 +5,39 @@
     <!--<meta name="viewport" content="width=device-width">-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <title></title>
-    <link rel="stylesheet" href="public/css/reset.css"/>
-    <link rel="stylesheet" href="public/css/index.css"/>
     <!-- 引入样式 -->
     <link rel="stylesheet" href="public/css/lib/element-index.css">
+
+    <link rel="stylesheet" href="public/css/reset.css"/>
+    <link rel="stylesheet" href="public/css/index.css"/>
+    <link rel="stylesheet" href="public/css/index-touch.css"/>
 </head>
 <body>
 <div id="app" class="wrap" v-cloak>
     <div class="left-content">
         <div class="head">
-            <h1 style="color: red;">讲座标题讲座标题讲座标题讲座标题讲座标题</h1>
+            <h1>讲座标题讲座标题讲座标题讲座标题讲座标题</h1>
         </div>
         <div class="content-video">
-            <video id="video"    src="public/index.mp4"></video>
+            <video id="video" src="public/index.mp4" webkit-playsinline playsinline></video>
             <div class="video-controls" id="video-controls">
                 <div class="voice-control">
                     <span>voice:</span>
+
                     <div class="voice-wrap">
                         <el-slider v-model="voice"></el-slider>
                     </div>
                 </div>
-                <div class="flower-control" v-flower>
+                <div class="flower-control" v-flower >
                     <el-button class="show-flower">献花</el-button>
                     <div class="flower-content">
                         <div class="flower">
                             <img src="" alt=""/>
+
                             <p class="flower-name">
                                 蓝色妖姬
                             </p>
+
                             <p class="flower-price">
                                 <span>100</span>
                                 金币
@@ -40,9 +45,11 @@
                         </div>
                         <div class="flower">
                             <img src="" alt=""/>
+
                             <p class="flower-name">
                                 蓝色妖姬
                             </p>
+
                             <p class="flower-price">
                                 <span>100</span>
                                 金币
@@ -50,9 +57,11 @@
                         </div>
                         <div class="flower">
                             <img src="" alt=""/>
+
                             <p class="flower-name">
                                 蓝色妖姬
                             </p>
+
                             <p class="flower-price">
                                 <span>100</span>
                                 金币
@@ -60,7 +69,7 @@
                         </div>
                         <div class="flower-confirm">
                             <p>我的金币余额：<span>1586</span></p>
-                            <el-button @click="sendFlower">
+                            <el-button class="flower-confirm" @click="sendFlower">
                                 确定
                             </el-button>
                         </div>
@@ -78,29 +87,96 @@
             </div>
         </div>
     </div>
-    <div class="right-content">
-        <div class="head">
-            <div id="people-num">
-                <span>在线听众：966人</span>
+    <div class="right-wrap">
+        <div class="right-content" v-show="route=='im'">
+            <div class="head">
+                <div id="people-num">
+                    <span>在线听众：965人</span>
+                </div>
+                <div class="im-controls">
+                    <el-button>清屏</el-button>
+                    <el-button>锁屏</el-button>
+                </div>
             </div>
-            <div class="im-controls">
-                <el-button>清屏</el-button>
-                <el-button>锁屏</el-button>
+            <div class="content-im">
+                <span>ha</span>
+            </div>
+            <div class="foot">
+                <div class="flower-control just-in-touch">
+                    <el-button class="show-flower" @click="switchRoute('flower')">献花</el-button>
+                </div>
+                <div id="expression">
+                    <el-button>表情</el-button>
+                </div>
+                <div id="inputBar">
+                    <textarea></textarea>
+                </div>
+                <div id="send">
+                    <el-button>发送</el-button>
+                </div>
             </div>
         </div>
-        <div class="content-im">
+        <div class="right-content-flower just-in-touch" v-flower v-show="route=='flower'" style="display: none;">
+            <div class="head">
+                献花
+            </div>
+            <div class="content-im">
+                <div class="flower">
+                    <img src="" alt=""/>
 
+                    <p class="flower-name">
+                        蓝色妖姬
+                    </p>
+
+                    <p class="flower-price">
+                        <span>100</span>
+                        金币
+                    </p>
+                </div>
+                <div class="flower">
+                    <img src="" alt=""/>
+
+                    <p class="flower-name">
+                        蓝色妖姬
+                    </p>
+
+                    <p class="flower-price">
+                        <span>100</span>
+                        金币
+                    </p>
+                </div>
+                <div class="flower">
+                    <img src="" alt=""/>
+
+                    <p class="flower-name">
+                        蓝色妖姬
+                    </p>
+
+                    <p class="flower-price">
+                        <span>100</span>
+                        金币
+                    </p>
+                </div>
+            </div>
+            <div class="foot">
+                <p>我的金币余额：<span>1586</span></p>
+                <el-button class="flower-confirm" @click="sendFlower('touch')">
+                    确定
+                </el-button>
+                <el-button  class="flower-confirm" @click="sendFlower('touch')">
+                    取消
+                </el-button>
+            </div>
         </div>
-        <div class="foot">
-            <div id="expression">
-                <el-button>表情</el-button>
+        <div class="alert alert-hongbao" v-show="alert=='hongbao'" style="display: none;">
+            <div class="content-hongbao">
+                <img src="" alt=""/>
+                红包图片
+                <div class="hongbao-button" @click="switchAlert('')">
+                    <el-button>领取</el-button>
+                </div>
             </div>
-            <div id="inputBar">
-                <textarea></textarea>
-            </div>
-            <div id="send">
-                <el-button>发送</el-button>
-            </div>
+
         </div>
     </div>
 </div>
@@ -112,6 +188,8 @@
 <script src="public/js/lib/element-index.js"></script>
 
 <script src="public/js/fullscreen.js"></script>
+<script src="public/js/util.js"></script>
 <script src="public/js/v-directives.js"></script>
 <script src="public/js/index.js"></script>
+<script src="public/js/index-touch.js"></script>
 </html>
