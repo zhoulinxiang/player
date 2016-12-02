@@ -7,7 +7,7 @@
 @height-controls: 40px;
 @leftWith: 960px;
 @rightWidth: 300px;
-@media screen and (max-width: 800px) and (orientation : portrait) {
+@media screen and (max-width: 800px){
   html, body {
     height: 100%;
   }
@@ -83,6 +83,7 @@
         flex: 1;
         display: flex;
         align-items: center;
+        justify-content: center;
         background-color: @grey;
         #people-num {
           flex: 1;
@@ -203,6 +204,14 @@
         }
       }
     }
+    .right-content-question-1{
+      .content-im{
+        display: flex;
+        justify-content: center;
+        align-content: center;
+      }
+    }
+
   }
 
   [v-cloak] {

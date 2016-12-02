@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--<meta name="viewport" content="width=device-width">-->
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">-->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no,minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title></title>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="public/css/lib/element-index.css">
+    <!-- 引入样式 -->
+    <!--<link rel="stylesheet" href="https://unpkg.com/mint-ui/lib/style.css">-->
+
+    <link rel="stylesheet" href="public/css/reset.css"/>
+    <!--<link rel="stylesheet" href="public/css/lib/weui.min.css"/>-->
+    <link rel="stylesheet" href="public/css/index-touch.css"/>
+    <link rel="stylesheet" href="public/css/index-touch-landscape.css"/>
+</head>
+<body>
+<div id="app" class="wrap" v-cloak>
+    <div class="left-content">
+        <div class="head">
+            <h1>讲座标题讲座标题讲座标题讲座标题讲座标题</h1>
+        </div>
+        <div class="content-video">
+            <!--<video id="video" src="public/index.mp4" webkit-playsinline playsinline></video>-->
+            <video id="video" src="public/index.mp4" autoplay controls></video>
+            <!--<div class="video-controls" id="video-controls">-->
+                <!--<div class="voice-control">-->
+                    <!--<span>voice:</span>-->
+
+                    <!--<div class="voice-wrap">-->
+                        <!--&lt;!&ndash;<slider v-model="voice"></slider>&ndash;&gt;-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="flower-control" v-flower >-->
+                    <!--<el-button class="show-flower">献花</el-button>-->
+                    <!--<div class="flower-content">-->
+                        <!--<div class="flower">-->
+                            <!--<img src="" alt=""/>-->
+
+                            <!--<p class="flower-name">-->
+                                <!--蓝色妖姬-->
+                            <!--</p>-->
+
+                            <!--<p class="flower-price">-->
+                                <!--<span>100</span>-->
+                                <!--金币-->
+                            <!--</p>-->
+                        <!--</div>-->
+                        <!--<div class="flower">-->
+                            <!--<img src="" alt=""/>-->
+
+                            <!--<p class="flower-name">-->
+                                <!--蓝色妖姬-->
+                            <!--</p>-->
+
+                            <!--<p class="flower-price">-->
+                                <!--<span>100</span>-->
+                                <!--金币-->
+                            <!--</p>-->
+                        <!--</div>-->
+                        <!--<div class="flower">-->
+                            <!--<img src="" alt=""/>-->
+
+                            <!--<p class="flower-name">-->
+                                <!--蓝色妖姬-->
+                            <!--</p>-->
+
+                            <!--<p class="flower-price">-->
+                                <!--<span>100</span>-->
+                                <!--金币-->
+                            <!--</p>-->
+                        <!--</div>-->
+                        <!--<div class="flower-confirm">-->
+                            <!--<p>我的金币余额：<span>1586</span></p>-->
+                            <!--<el-button class="flower-confirm" @click="sendFlower">-->
+                                <!--确定-->
+                            <!--</el-button>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="problem-control">-->
+                    <!--<el-button>题目获取</el-button>-->
+                <!--</div>-->
+                <!--<div class="full-play-control">-->
+                    <!--<el-button>播放器全屏</el-button>-->
+                <!--</div>-->
+                <!--<div class="full-control">-->
+                    <!--<el-button>网页全屏</el-button>-->
+                <!--</div>-->
+            <!--</div>-->
+        </div>
+    </div>
+    <div class="right-wrap">
+        <div class="right-content" v-show="route=='im'">
+            <div class="head">
+                <div id="people-num">
+                    <span>在线听众：965人</span>
+                </div>
+                <div class="im-controls">
+                    <el-button>清屏</el-button>
+                    <el-button>锁屏</el-button>
+                </div>
+            </div>
+            <div class="content-im">
+                <span>ha</span>
+            </div>
+            <div class="foot">
+                <div class="flower-control just-in-touch">
+                    <el-button class="show-flower" @click="switchRoute('flower')">献花</el-button>
+                </div>
+                <div id="expression">
+                    <el-button @click.native="open">表情</el-button>
+                </div>
+                <!--<div class="full-control">-->
+                    <!--<el-button>全屏</el-button>-->
+                <!--</div>-->
+                <div id="inputBar">
+                    <textarea></textarea>
+                </div>
+                <div id="send">
+                    <el-button>发送</el-button>
+                </div>
+            </div>
+        </div>
+        <div class="right-content-flower just-in-touch" v-flower v-show="route=='flower'" style="display: none;">
+            <div class="head">
+                献花
+            </div>
+            <div class="content-im">
+                <div class="flower">
+                    <img src="" alt=""/>
+
+                    <p class="flower-name">
+                        蓝色妖姬
+                    </p>
+
+                    <p class="flower-price">
+                        <span>100</span>
+                        金币
+                    </p>
+                </div>
+                <div class="flower">
+                    <img src="" alt=""/>
+
+                    <p class="flower-name">
+                        蓝色妖姬
+                    </p>
+
+                    <p class="flower-price">
+                        <span>100</span>
+                        金币
+                    </p>
+                </div>
+                <div class="flower">
+                    <img src="" alt=""/>
+
+                    <p class="flower-name">
+                        蓝色妖姬
+                    </p>
+
+                    <p class="flower-price">
+                        <span>100</span>
+                        金币
+                    </p>
+                </div>
+            </div>
+            <div class="foot">
+                <p>我的金币余额：<span>1586</span></p>
+                <el-button class="flower-confirm" @click="sendFlower('touch')">
+                    确定
+                </el-button>
+                <el-button  class="flower-confirm" @click="sendFlower('touch')">
+                    取消
+                </el-button>
+            </div>
+        </div>
+        <div class="right-content right-content-question-1" v-show="route=='question1'" style="display: none;">
+            <div class="head">
+                互动题
+            </div>
+            <div class="content-im">
+                <div>
+                    <el-button>A</el-button>
+                    <el-button>B</el-button>
+                    <el-button>C</el-button>
+                    <el-button>D</el-button>
+                </div>
+            </div>
+            <div class="foot">
+                <div>
+                    <el-button @click="sendQuestion1()">提交</el-button>
+                </div>
+            </div>
+        </div>
+        <div class="alert alert-hongbao" v-show="alert=='hongbao'" style="display: none;">
+            <div class="content-hongbao">
+                <img src="" alt=""/>
+                红包图片
+                <div class="hongbao-button" @click="switchAlert('')">
+                    <el-button>领取</el-button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="public/js/lib/jquery-1.11.3.min.js"></script>
+<!-- 先引入 Vue -->
+<script src="public/js/lib/vue.js"></script>
+<!-- 引入组件库 -->
+<script src="public/js/lib/element-index.js"></script>
+<!-- 引入组件库 -->
+<!--<script src="https://unpkg.com/mint-ui/lib/index.js"></script>-->
+
+<script src="public/js/fullscreen.js"></script>
+<script src="public/js/util.js"></script>
+<script src="public/js/v-directives.js"></script>
+<script src="public/js/touch/index.js"></script>
+
+<script src="public/js/lib/hls.min.js"></script>
+<script>
+//    if(Hls.isSupported()) {
+//        var video = document.getElementById('video');
+//        var hls = new Hls();
+//        hls.loadSource($(video).attr('src'));
+//        hls.attachMedia(video);
+//        hls.on(Hls.Events.MANIFEST_PARSED,function() {
+//            video.play();
+//        });
+//    }
+</script>
+</html>

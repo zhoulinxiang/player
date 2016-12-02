@@ -20,25 +20,35 @@
     height: @height;
     margin: 80px auto;
     overflow: hidden;
+    display: flex;
     .left-content {
       //width: @leftWith;
       width: 76%;
+      //flex: 3;
+      height:100%;
       float: left;
+      display: flex;
+      flex-direction: column;
       .head {
-        height: @height-top;
+        height: 60px;
+        //height: @height-top;
         background-color: @grey;
       }
       .content-video {
-        height: 540px;
+        flex: 1;
+        //height: 540px;
         //width: @leftWith;
-        width: 100%;
+        //width: 100%;
+        //height:90%;
         position: relative;
+        display: flex;
         background-color: @grey2;
         video {
           //height: 100%;
           //margin:0 auto;
-          width: 100%;
-          max-height: 540px;
+          //width: 100%;
+          //height: 100%;
+          flex: 1;
         }
         .video-controls {
           height: @height-controls;
@@ -122,63 +132,84 @@
       }
 
     }
-    .right-content {
-      //width: @rightWidth;
+    .right-wrap{
       width: 23%;
+      //flex: 1;
       float: left;
-      .head {
-        height: @height-top;
-        background-color: @grey2;
-        #people-num {
-          float: left;
-          width: 50%;
-          > span {
-            line-height: @height-top;
+      position: relative;
+      height:100%;
+      .right-content {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        //width: @rightWidth;
+        .head {
+          height: @height-top;
+          background-color: @grey2;
+          #people-num {
+            float: left;
+            width: 50%;
+            > span {
+              line-height: @height-top;
+            }
           }
-        }
 
-        .im-controls {
-          float: right;
-          margin-right: 10px;
-          height: 100%;
-          button {
-            margin-top: 15px;
-            //height: 100%;
+          .im-controls {
+            float: right;
+            margin-right: 10px;
+            height: 100%;
+            button {
+              margin-top: 15px;
+              //height: 100%;
+            }
           }
+
+        }
+        .content-im {
+          //height: 540px-@height-top;
+          //height: 80%;
+          flex: 1;
+          img{
+            width: 1em;
+            height: 1em;
+          }
+
+        }
+        .foot {
+          height: @height-top;
+          background-color: @grey;
+          > div {
+            float: left;
+          }
+          #expression {
+            margin: 10px 10px;
+            width: 20%;
+          }
+          #inputBar {
+            width: 45%;
+            margin-top: 10px;
+            textarea {
+              width: 100%;
+              resize: none;
+              height: 30px;
+            }
+          }
+          #send {
+            width: 20%;
+            margin: 10px 10px;
+          }
+
         }
 
       }
-      .content-im {
-        height: 540px-@height-top;
+      .alert{
+        position: absolute;
+        top:0;
 
       }
-      .foot {
-        height: @height-top;
-        background-color: @grey;
-        > div {
-          float: left;
-        }
-        #expression {
-          margin: 10px 10px;
-          width: 20%;
-        }
-        #inputBar {
-          width: 45%;
-          margin-top: 10px;
-          textarea {
-            width: 100%;
-            resize: none;
-            height: 30px;
-          }
-        }
-        #send {
-          width: 20%;
-          margin: 10px 10px;
-        }
-
-      }
-
     }
+
   }
 
   .clearfix {
@@ -188,6 +219,10 @@
 
   .full-screen {
     width: 100% !important;
+    height: 100% !important;
+    z-index: 10000;
+    position: absolute;
+    margin: 0;
   }
 
   [v-cloak] {

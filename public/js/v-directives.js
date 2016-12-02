@@ -10,7 +10,7 @@ Vue.directive('flower', {
 
         //献花页面滑入滑出控制
         flowerControl.on('click',function(){
-            flowerContent.stop(true, false).slideToggle();
+            flowerContent.stop(true, false).fadeToggle();
         });
         //选择花朵控制
         flowers.on('click',function(e){
@@ -26,7 +26,7 @@ Vue.directive('flower', {
         //确认送花按钮
         flowerComfirm.on('click',function(){
             $(flowers).removeClass('active');
-            flowerContent.slideUp();
+            flowerContent.stop(true, false).fadeOut();
         })
 
 

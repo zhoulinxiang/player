@@ -10,9 +10,11 @@
         data: {
             voice:50,
             route:'im',
-        //    im,flower,question
+        //    im,flower,question1
             alert:'',
         //hongbao,
+            questionA:'',
+        //    互动题选择题选项
         },
         methods:{
             sendFlower:function(type){
@@ -27,6 +29,19 @@
             },
             switchAlert:function(alerttmp){
                 this.alert=alerttmp;
+                if(alerttmp){
+                    $('body').css('overflow','hidden');
+                }else{
+                    $('body').css('overflow','auto');
+                }
+
+
+            },
+            open: function () {
+                this.$message('这是一条消息提示');
+            },
+            sendQuestion1:function(){
+                this.switchRoute('im');
             }
         },
 
@@ -40,28 +55,10 @@
             appContent=$('#app');
             fullPlayer=$('.full-play-control');
             fullApp=$('.full-control');
-            if(IsPC()){
-                fullPlayer.on('click',function(){
-                    console.log('click fullPlayer');
-                    fullscreen(leftContent[0]);
-                });
-                fullApp.on('click',function(){
-                    console.log('click fullApp');
-                    fullscreen(appContent[0]);
-                });
-                //video控制器滑入滑出
-                $(video).parent().mouseenter(
-                    function () {
-                        videoControls.stop(true, false).slideDown();
-                    }
-                );
-                $(video).parent().mouseleave(
-                    function () {
-                        videoControls.stop(true, false).slideUp();
-                    }
-                )
-            }
-
+            fullApp.on('click', function () {
+                console.log('click fullApp');
+                fullscreen(appContent[0]);
+            });
 
 
 

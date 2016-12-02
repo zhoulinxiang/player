@@ -1,6 +1,6 @@
 var fullscreen=function(elem){
     //elem=document.body;
-    //$(elem).addClass('full-screen');
+    $(elem).addClass('full-screen');
     if(elem.webkitRequestFullScreen){
         elem.webkitRequestFullScreen();
     }else if(elem.mozRequestFullScreen){
@@ -25,4 +25,28 @@ var exitFullscreen=function(){
     }else{
         //浏览器不支持全屏API或已被禁用  
     }
-} 
+}
+document.addEventListener("fullscreenchange", function(e) {
+    if(!document.webkitFullscreenElement){
+        $('.full-screen').removeClass('full-screen');
+    }
+    console.log("fullscreenchange", e);
+});
+document.addEventListener("mozfullscreenchange", function(e) {
+    if(!document.webkitFullscreenElement){
+        $('.full-screen').removeClass('full-screen');
+    }
+    console.log("mozfullscreenchange ", e);
+});
+document.addEventListener("webkitfullscreenchange", function(e) {
+    if(!document.webkitFullscreenElement){
+        $('.full-screen').removeClass('full-screen');
+    }
+    console.log("webkitfullscreenchange", e);
+});
+document.addEventListener("msfullscreenchange", function(e) {
+    if(!document.webkitFullscreenElement){
+        $('.full-screen').removeClass('full-screen');
+    }
+    console.log("msfullscreenchange", e);
+});
