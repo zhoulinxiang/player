@@ -12,7 +12,7 @@ var fullscreen=function(elem){
     }
 }
 var exitFullscreen=function(){
-    $('.full-screen').removeClass('full-screen');
+    //$('.full-screen').removeClass('full-screen');
     var elem=document;
     if(elem.webkitCancelFullScreen){
         elem.webkitCancelFullScreen();
@@ -29,24 +29,32 @@ var exitFullscreen=function(){
 document.addEventListener("fullscreenchange", function(e) {
     if(!document.webkitFullscreenElement){
         $('.full-screen').removeClass('full-screen');
+        app.videoControls.fullPlayer=false;
+        app.videoControls.fullApp=false;
     }
-    console.log("fullscreenchange", e);
+    //console.log("fullscreenchange", e);
 });
 document.addEventListener("mozfullscreenchange", function(e) {
     if(!document.webkitFullscreenElement){
         $('.full-screen').removeClass('full-screen');
+        app.videoControls.fullPlayer=false;
+        app.videoControls.fullApp=false;
     }
-    console.log("mozfullscreenchange ", e);
+    //console.log("mozfullscreenchange ", e);
 });
 document.addEventListener("webkitfullscreenchange", function(e) {
     if(!document.webkitFullscreenElement){
         $('.full-screen').removeClass('full-screen');
+        app.videoControls.fullPlayer=false;
+        app.videoControls.fullApp=false;
     }
-    console.log("webkitfullscreenchange", e);
+    //console.log("webkitfullscreenchange", e);
 });
 document.addEventListener("msfullscreenchange", function(e) {
     if(!document.webkitFullscreenElement){
         $('.full-screen').removeClass('full-screen');
+        app.videoControls.fullPlayer=false;
+        app.videoControls.fullApp=false;
     }
-    console.log("msfullscreenchange", e);
+    //console.log("msfullscreenchange", e);
 });

@@ -1,6 +1,6 @@
 //$(function () {
-var video;
-var leftContent, appContent, fullPlayer, fullApp;
+//var video;
+//var leftContent, appContent, fullPlayer, fullApp;
 //var video2=document.getElementById("video");
 var videoControls;
 
@@ -13,9 +13,19 @@ var app = new Vue({
         //    im,flower,question
         alert: '',
         //hongbao,
+        //聊天控制数据
         imControls:{
             text:'',
             messages:[]
+        },
+        //播放器控制数据
+        videoControls:{
+            fullPlayer:false,
+            //播放器是否全屏，
+            fullApp:false,
+            //网页是否全屏
+
+
         }
     },
     methods: {
@@ -36,36 +46,28 @@ var app = new Vue({
     },
 
     mounted: function () {
-        video = $('#video')[0];
-        videoControls = $('#video-controls');
-        video.volume = 0.5;
-        console.log(video);
+        //video = $('#video')[0];
+        //videoControls = $('#video-controls');
+        //video.volume = 0.5;
+        //console.log(video);
 
-        leftContent = $('.left-content');
-        appContent = $('#app');
-        fullPlayer = $('.full-play-control');
-        fullApp = $('.full-control');
-        if (IsPC()) {
-            fullPlayer.on('click', function () {
-                console.log('click fullPlayer');
-                fullscreen(leftContent[0]);
-            });
-            fullApp.on('click', function () {
-                console.log('click fullApp');
-                fullscreen(appContent[0]);
-            });
+
+        //fullPlayer = $('.full-play-control');
+        //fullApp = $('.full-control');
+        //if (IsPC()) {
+        //
             //video控制器滑入滑出
-            $(video).parent().mouseenter(
-                function () {
-                    videoControls.stop(true, false).slideDown();
-                }
-            );
-            $(video).parent().mouseleave(
-                function () {
-                    videoControls.stop(true, false).slideUp();
-                }
-            )
-        }
+        //    $(video).parent().mouseenter(
+        //        function () {
+        //            videoControls.stop(true, false).slideDown();
+        //        }
+        //    );
+        //    $(video).parent().mouseleave(
+        //        function () {
+        //            videoControls.stop(true, false).slideUp();
+        //        }
+        //    )
+        //}
 
 
     },

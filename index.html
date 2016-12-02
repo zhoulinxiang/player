@@ -81,10 +81,12 @@
                         <el-button>题目获取</el-button>
                     </div>
                     <div class="full-play-control">
-                        <el-button>播放器全屏</el-button>
+                        <el-button class="full-play-control-false" v-show='!videoControls.fullPlayer'>播放器全屏</el-button>
+                        <el-button class="full-play-control-true" v-show='videoControls.fullPlayer'>播放器缩小</el-button>
                     </div>
                     <div class="full-control">
-                        <el-button>网页全屏</el-button>
+                        <el-button class="full-app-control-false" v-show='!videoControls.fullApp'>网页全屏</el-button>
+                        <el-button class="full-app-control-true" v-show='videoControls.fullApp'>网页缩小</el-button>
                     </div>
                 </div>
             </div>
@@ -220,6 +222,7 @@
 <script src="public/js/util.js"></script>
 <script src="public/js/v-directives.js"></script>
 <script src="public/js/pc/index.js"></script>
+<script src="public/js/video-controls.js"></script>
 <script src="public/js/im-controls.js"></script>
 <!--<script src="public/js/index-touch.js"></script>-->
 </html>
