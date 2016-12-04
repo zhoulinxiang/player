@@ -6,9 +6,9 @@ var fullscreen=function(elem){
     }else if(elem.mozRequestFullScreen){
         elem.mozRequestFullScreen();
     }else if(elem.requestFullScreen){
+        //浏览器不支持全屏API或已被禁用
         elem.requestFullscreen();
     }else{
-        //浏览器不支持全屏API或已被禁用  
     }
 }
 var exitFullscreen=function(){
@@ -35,7 +35,7 @@ document.addEventListener("fullscreenchange", function(e) {
     //console.log("fullscreenchange", e);
 });
 document.addEventListener("mozfullscreenchange", function(e) {
-    if(!document.webkitFullscreenElement){
+    if(!document.mozFullScreenElement){
         $('.full-screen').removeClass('full-screen');
         app.videoControls.fullPlayer=false;
         app.videoControls.fullApp=false;

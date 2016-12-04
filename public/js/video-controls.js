@@ -1,30 +1,15 @@
-var videoComponents = {
-    fullPlayerFalseBtn: $('.full-play-control-false'),
-    fullPlayerTrueBtn: $('.full-play-control-true'),
-    fullAppFalseBtn: $('.full-app-control-false'),
-    fullAppTrueBtn: $('.full-app-control-true'),
-    leftContent:$('.left-content'),
-    appContent:$('#app'),
-    video:$('#video'),
-    videoControls : $('#video-controls'),
-    };
+
+var videoComponents=appParam.videoComponents;
 //需要依赖全局vue组件app
 var videoDatas = app.videoControls;
+
+var timeoutFlag=null;
 var videoControls = {
     bindEvents: function () {
         //初始声音0.5
         videoComponents.video[0].volume = 0.5;
         //video控制器滑入滑出
-        videoComponents.video.parent().mouseenter(
-            function () {
-                videoComponents.videoControls.stop(true, false).slideDown();
-            }
-        );
-        videoComponents.video.parent().mouseleave(
-            function () {
-                videoComponents.videoControls.stop(true, false).slideUp();
-            }
-        );
+        this.bindShowControls();
         //播放器全屏
         videoComponents.fullPlayerFalseBtn.on('click', function () {
             console.log('click fullPlayer');
@@ -40,7 +25,7 @@ var videoControls = {
         //网页全屏
         videoComponents.fullAppFalseBtn.on('click', function () {
             console.log('click fullPlayer');
-            fullscreen(videoComponents.appContent[0]);
+            fullscreen(document.body);
             videoDatas.fullApp=true;
         });
         //网页缩小
@@ -49,12 +34,71 @@ var videoControls = {
             exitFullscreen();
             //videoDatas.fullPlayer=!videoDatas.fullPlayer;
         });
+        //献花显示隐藏
+        videoComponents.videoControls.find('.flower-control>button').on('click',function(){
+            if(videoDatas.route=='flower'){
+                videoDatas.route=''
+            }else{
+            videoDatas.route='flower';
+            }
+        });
+        videoComponents.videoControls.find('.problem-control>button').on('click',function(){
+            if(videoDatas.route=='question'){
+                videoDatas.route=''
+            }else{
+                videoDatas.route='question';
+            }
+        });
 
 
         //fullAppFalseBtn.on('click', function () {
         //    console.log('click fullApp');
         //    fullscreen(appContent[0]);
         //});
-    }
+    },
+    bindShowControls:function(){
+        videoComponents.video.parent().parent().mouseenter(
+            function () {
+                //videoComponents.videoControls.stop(true, false).slideDown();
+                videoDatas.showController=true;
+            }
+        );
+        videoComponents.video.parent().parent().mouseleave(
+            function () {
+                //videoComponents.videoControls.stop(true, false).slideUp();
+                console.log("")
+                videoDatas.showController=false;
+            }
+        );
+        videoComponents.video.mousemove(
+            function (e) {
+                //videoComponents.videoControls.stop(true, false).slideUp();
+                //videoDatas.showController=false;
+                //console.log('mouse move');
+                //console.log(e.target);
+                //if(e.target!==videoComponents.video[0]){
+                //    return;
+                //}
+                //console.log(e);
+                videoDatas.showController=true;
+                //videoDatas.showController=false;
+                if(timeoutFlag){
+                    clearTimeout(timeoutFlag);
+                    timeoutFlag=null;
+                    timeoutFlag=setTimeout("videoDatas.showController=false",1000);
+
+                }else{
+                    timeoutFlag=setTimeout("videoDatas.showController=false",1000);
+                }
+            }
+        );
+        videoComponents.videoControls.mouseenter(
+            function () {
+                console.log('mouseeenter')
+                clearTimeout(timeoutFlag);
+                timeoutFlag=null;
+            }
+        );
+    },
 };
 videoControls.bindEvents();

@@ -7,7 +7,7 @@
     display: flex;
   }
   .wrap .left-content {
-    width: 76%;
+    width: 75%;
     height: 100%;
     float: left;
     display: flex;
@@ -20,11 +20,16 @@
   .wrap .left-content .content-video {
     flex: 1;
     position: relative;
-    display: flex;
     background-color: #aaa;
   }
-  .wrap .left-content .content-video video {
+  .wrap .left-content .content-video .video-wrap {
+    width: 100%;
     flex: 1;
+  }
+  .wrap .left-content .content-video .video-wrap video {
+    height: 100%;
+    width: 100%;
+    position: absolute;
   }
   .wrap .left-content .content-video .video-controls {
     height: 40px;
@@ -60,8 +65,7 @@
     width: 10%;
     height: 100%;
   }
-  .wrap .left-content .content-video .video-controls .flower-control .flower-content {
-    display: none;
+  .wrap .left-content .content-video .video-controls .video-route-content {
     width: 100%;
     height: 50px;
     position: absolute;
@@ -69,37 +73,52 @@
     background-color: #fff;
     left: 0;
   }
-  .wrap .left-content .content-video .video-controls .flower-control .flower-content .flower {
+  .wrap .left-content .content-video .video-controls .video-route-content .flower {
     float: left;
     width: 15%;
   }
-  .wrap .left-content .content-video .video-controls .flower-control .flower-content .flower img {
+  .wrap .left-content .content-video .video-controls .video-route-content .flower img {
     width: 50%;
   }
-  .wrap .left-content .content-video .video-controls .flower-control .flower-content .flower .flower-price span {
+  .wrap .left-content .content-video .video-controls .video-route-content .flower .flower-price span {
     color: red;
   }
-  .wrap .left-content .content-video .video-controls .flower-control .flower-content .flower.active {
+  .wrap .left-content .content-video .video-controls .video-route-content .flower.active {
     background-color: #aaa;
   }
-  .wrap .left-content .content-video .video-controls .flower-control .flower-content .flower-confirm {
+  .wrap .left-content .content-video .video-controls .video-route-content .flower-confirm {
     height: 100%;
     width: 30%;
     float: right;
   }
-  .wrap .left-content .content-video .video-controls .flower-control .flower-content .flower-confirm p {
+  .wrap .left-content .content-video .video-controls .video-route-content .flower-confirm p {
     float: left;
   }
-  .wrap .left-content .content-video .video-controls .flower-control .flower-content .flower-confirm button {
+  .wrap .left-content .content-video .video-controls .video-route-content .flower-confirm button {
     float: left;
     height: 80%;
     margin-left: 20px;
+  }
+  .wrap .left-content .content-video .video-controls .question-content {
+    display: flex;
+  }
+  .wrap .left-content .content-video .video-controls .question-content .question {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .wrap .left-content .content-video .video-controls .question-content .active {
+    background-color: #aaa;
+  }
+  .wrap .left-content .content-video .video-controls .question-content .question-confirm {
+    flex: 1;
   }
   .wrap .left-content .content-video .video-controls button {
     height: 100%;
   }
   .wrap .right-wrap {
-    width: 23%;
+    width: 25%;
     float: left;
     position: relative;
     height: 100%;
@@ -160,9 +179,12 @@
     width: 20%;
     margin: 10px 10px;
   }
-  .wrap .right-wrap .alert {
+  .wrap .alert {
     position: absolute;
     top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(100, 100, 100, 0.3);
   }
   .clearfix {
     overflow: auto;
@@ -172,8 +194,19 @@
     width: 100% !important;
     height: 100% !important;
     z-index: 10000;
-    position: absolute;
     margin: 0;
+  }
+  .full-screen .wrap {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    background-color: #fff;
+  }
+  .full-wrap {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    background-color: #fff;
   }
   [v-cloak] {
     display: none;

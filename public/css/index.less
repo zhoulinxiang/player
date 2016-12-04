@@ -23,9 +23,9 @@
     display: flex;
     .left-content {
       //width: @leftWith;
-      width: 76%;
+      width: 75%;
       //flex: 3;
-      height:100%;
+      height: 100%;
       float: left;
       display: flex;
       flex-direction: column;
@@ -41,14 +41,19 @@
         //width: 100%;
         //height:90%;
         position: relative;
-        display: flex;
+        //display: flex;
         background-color: @grey2;
-        video {
+        .video-wrap {
           //height: 100%;
           //margin:0 auto;
-          //width: 100%;
+          width: 100%;
           //height: 100%;
           flex: 1;
+          video{
+            height: 100%;
+            width: 100%;
+            position: absolute;
+          }
         }
         .video-controls {
           height: @height-controls;
@@ -87,42 +92,59 @@
             width: 10%;
             height: 100%;
           }
-          .flower-control {
-            .flower-content {
-              display: none;
-              width: 100%;
-              height: 50px;
-              position: absolute;
-              bottom: @height-controls;
-              background-color: #fff;
-              left: 0;
-              .flower {
+          .video-route-content {
+            //display: none;
+            width: 100%;
+            height: 50px;
+            position: absolute;
+            bottom: @height-controls;
+            background-color: #fff;
+            left: 0;
+            .flower {
+              float: left;
+              width: 15%;
+              img {
+                width: 50%;
+              }
+              .flower-price span {
+                color: red;
+              }
+            }
+            .flower.active {
+              background-color: @grey2;
+            }
+            .flower-confirm {
+              height: 100%;
+              width: 30%;
+              float: right;
+              //line-height: 50px;
+              p {
                 float: left;
-                width: 15%;
-                img {
-                  width: 50%;
-                }
-                .flower-price span {
-                  color: red;
-                }
               }
-              .flower.active {
-                background-color: @grey2;
+              button {
+                float: left;
+                height: 80%;
+                margin-left: 20px;
               }
-              .flower-confirm {
-                height: 100%;
-                width: 30%;
-                float: right;
-                //line-height: 50px;
-                p {
-                  float: left;
-                }
-                button {
-                  float: left;
-                  height: 80%;
-                  margin-left: 20px;
-                }
-              }
+            }
+          }
+          .question-content{
+            display: flex;
+            .question{
+              flex: 1;
+              display: flex;
+              //text-align: center;
+              //align-content: center;
+              justify-content: center;
+              //align-content: center;
+              align-items: center;
+
+            }
+            .active{
+              background-color: @grey2;
+            }
+            .question-confirm{
+              flex:1;
             }
           }
           button {
@@ -132,12 +154,12 @@
       }
 
     }
-    .right-wrap{
-      width: 23%;
+    .right-wrap {
+      width: 25%;
       //flex: 1;
       float: left;
       position: relative;
-      height:100%;
+      height: 100%;
       .right-content {
         height: 100%;
         width: 100%;
@@ -170,7 +192,7 @@
           //height: 540px-@height-top;
           //height: 80%;
           flex: 1;
-          img{
+          img {
             width: 1em;
             height: 1em;
           }
@@ -203,11 +225,14 @@
         }
 
       }
-      .alert{
-        position: absolute;
-        top:0;
+    }
+    .alert {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(100, 100, 100, 0.3);
 
-      }
     }
 
   }
@@ -221,14 +246,27 @@
     width: 100% !important;
     height: 100% !important;
     z-index: 10000;
-    position: absolute;
+    //position: absolute;
     margin: 0;
+    .wrap {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      background-color: #fff;
+    }
+  }
+  .full-wrap{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    background-color: #fff;
   }
 
   [v-cloak] {
     display: none;
   }
-  .just-in-touch{
+
+  .just-in-touch {
     display: none;
   }
 }

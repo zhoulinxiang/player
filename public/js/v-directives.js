@@ -12,24 +12,39 @@ Vue.directive('flower', {
         flowerControl.on('click',function(){
             flowerContent.stop(true, false).fadeToggle();
         });
-        //选择花朵控制
-        flowers.on('click',function(e){
-            //console.log(flowers);
-            $(flowers).removeClass('active');
-            //for(var i=0;i<flowers.length;i++){
-            //    $(flowers[i]).removeClass('active');
-            //}
-            //console.log(e);
-            $(e.currentTarget).addClass('active');
-        });
+        ////选择花朵控制
+        //flowers.on('click',function(e){
+        //    //console.log(flowers);
+        //    $(flowers).removeClass('active');
+        //    //for(var i=0;i<flowers.length;i++){
+        //    //    $(flowers[i]).removeClass('active');
+        //    //}
+        //    //console.log(e);
+        //    $(e.currentTarget).addClass('active');
+        //});
         //console.log(flowerComfirm);
         //确认送花按钮
         flowerComfirm.on('click',function(){
             $(flowers).removeClass('active');
             flowerContent.stop(true, false).fadeOut();
         })
-
-
         //el.
+    }
+});
+Vue.directive('select-one', {
+    bind: function (el, binding, vnode) {
+        el=$(el);
+        var selectId=el[0].dataset.selectid;
+        var slectItem=el.children('.'+selectId);
+        //选择控制
+        slectItem.on('click',function(e){
+            //console.log(flowers);
+            slectItem.removeClass('active');
+            //for(var i=0;i<flowers.length;i++){
+            //    $(flowers[i]).removeClass('active');
+            //}
+            //console.log(e);
+            $(e.currentTarget).addClass('active');
+        });
     }
 })

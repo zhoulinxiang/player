@@ -1,11 +1,4 @@
-var imComponents = {
-    clearBtn: $('#im-clear-btn'),
-    lockBtn: $('#im-lock-btn'),
-    expressBtn: $('#im-express-btn'),
-    sendBtn: $('#im-send-btn'),
-    textArea: $('#im-textarea'),
-    expressDiv: $('#expression-div')
-};
+var imComponents = appParam.imComponents;
 //需要依赖全局vue组件app
 var imDatas = app.imControls;
 var imControls = {
