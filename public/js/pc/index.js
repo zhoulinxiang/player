@@ -73,6 +73,29 @@ var app = new Vue({
                 }
                 this.videoControls.showCtrlFlag = setTimeout("videoComponents.videoControls.slideUp('fast');", 1000);
             }
+        },
+        'videoControls.bufferedTime': function (nv, ov) {
+            videoComponents.bufferedBar.width((nv / this.videoControls.durationTime) * videoComponents.playBar.width());
+        },
+        'videoControls.playedTime': function (nv, ov) {
+
+            //console.log('playedtime:' + this.videoControls.playedTime);
+            this.videoControls.playedBarWidth = Math.round((nv / this.videoControls.durationTime) * videoComponents.playBar.width());
+            videoComponents.playedBar.width(this.videoControls.playedBarWidth);
+            videoComponents.video[0].currentTime=nv;
+        },
+        'videoControls.playedBarWidth': function (nv, ov) {
+            //this.videoControls.playedTime=
+        }
+
+    },
+    filters: {
+        timer: function (value) {
+            if (!value) return '00:00';
+            value = parseInt(value);
+            var m = Math.floor(value / 60),
+                n = value % 60;
+            return ((m > 10) ? m : ('0' + m)) + ':' + ((n > 10) ? n : ('0' + n));
         }
     }
 });

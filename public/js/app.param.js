@@ -10,7 +10,8 @@ appParam.appDatas={
     //聊天控制数据
     imControls:{
         text:'',
-        messages:[]
+        messages:[],
+
     },
     //播放器控制数据
     videoControls:{
@@ -23,6 +24,15 @@ appParam.appDatas={
         showCtrlFlag:null,
         //显示路由 flower,question
         route:'',
+        play:false,
+        //已播放时间
+        playedTime:0,
+        //playerbar宽度
+        playedBarWidth:0,
+        //已缓冲时间
+        bufferedTime:0,
+        //视频时长
+        durationTime:0
 
     }
 };
@@ -36,6 +46,12 @@ function initDom(){
         appContent:$('#app'),
         video:$('#video'),
         videoControls : $('#video-controls'),
+        playBtn:$('.play-button'),
+        pauseBtn:$('.pause-button'),
+        playBar:$('.playtime-control'),
+        bufferedBar:$('.bufferd-bar'),
+        playedBar:$('.played'),
+        playedSlide:$('.played-slide'),
     };
     appParam.imComponents = {
         clearBtn: $('#im-clear-btn'),
