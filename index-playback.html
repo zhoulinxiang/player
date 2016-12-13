@@ -22,7 +22,7 @@
         <div class="content-video">
             <!--<video id="video" src="public/index.mp4" webkit-playsinline playsinline></video>-->
             <div class="video-wrap">
-                <video id="video" src="./public/index.mp4" controls></video>
+                <video id="video" src="./public/index.mp4" ></video>
                 <!--<video id="video" src="./public/index.mp4" webkit-playsinline playsinline controls></video>-->
             </div>
             <div class="bottom-controls">
@@ -102,7 +102,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="video-controls" id="video-controls">
+                <div class="video-controls" id="video-controls" style="display: none;">
                     <div class="play-pause">
                         <el-button class="play-button" v-show='!videoControls.play'>播放</el-button>
                         <el-button class="pause-button" v-show='videoControls.play'>暂停</el-button>

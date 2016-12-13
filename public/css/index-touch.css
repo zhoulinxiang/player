@@ -1,4 +1,4 @@
-@media screen and (max-width: 800px) {
+@media screen {
   html,
   body {
     height: 100%;
@@ -27,6 +27,7 @@
   }
   #app .left-content .content-video {
     height: auto;
+    font-size: 0;
   }
   #app .left-content .content-video #video {
     width: 100%;
@@ -76,6 +77,7 @@
     align-items: center;
     justify-content: center;
     background-color: #eee;
+    min-height: 40px;
   }
   #app .right-content .head #people-num {
     flex: 1;
@@ -88,12 +90,18 @@
   #app .right-content .content-im {
     flex: 6;
     height: auto;
+    overflow: auto;
+  }
+  #app .right-content .content-im img {
+    height: 1em;
+    width: 1em;
   }
   #app .right-content .foot {
     flex: 1;
     display: flex;
     background-color: #eee;
     justify-content: space-around;
+    min-height: 40px;
     align-items: center;
   }
   #app .right-content .foot .flower-control {
@@ -114,11 +122,23 @@
   }
   #app .right-content .foot #inputBar textarea {
     width: 100%;
+    line-height: 100%;
     resize: none;
   }
   #app .right-content .foot #send {
     flex: 1;
     margin: 0 5px;
+  }
+  #app #expression-div {
+    flex: 3 ;
+    max-height: 50%;
+  }
+  #app #expression-div .express-wrap {
+    height: 100%;
+    overflow: auto;
+  }
+  #app #expression-div img {
+    width: 10%;
   }
   #app .right-content-flower {
     height: 100%;
@@ -183,6 +203,12 @@
     display: flex;
     justify-content: center;
     align-content: center;
+  }
+  #app .right-content-question-1 .content-im .el-radio-group {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    align-items: center;
   }
   [v-cloak] {
     display: none;

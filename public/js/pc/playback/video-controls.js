@@ -2,87 +2,17 @@
 var videoComponents=appParam.videoComponents;
 //需要依赖全局vue组件app
 var videoDatas = app.videoControls;
-
+//video=1;
 var timeoutFlag=null;
+var onmouseupFlag=false;//防止进度条mouseup事件同时出发click事件响应
 var videoControls = {
     bindEvents: function () {
-        //初始声音0.5
-        videoComponents.video[0].volume = 0.5;
 
-        videoComponents.playBtn.on('click',function(){
-            videoDatas.play=true;
-            videoComponents.video[0].play();
-        });
-        videoComponents.pauseBtn.on('click',function(){
-            videoDatas.play=false;
-            videoComponents.video[0].pause();
-        });
-        videoComponents.video.on('loadedmetadata',function(e){
-            //console.log('loadmetadata');
-            //console.log(e);
-            videoDatas.durationTime=videoComponents.video[0].duration;
-
-            //videoDatas.playedTime=100;
-        });
-        videoComponents.video.on('play',function(){
-            console.log('play');
-            videoDatas.play=true;
-        });
-        videoComponents.video.on('pause',function(){
-            console.log('pause');
-            videoDatas.play=false;
-        });
-        videoComponents.video.on('timeupdate',function(e){
-            //console.log('timeupdate');
-            //console.log(videoComponents.video[0].currentTime);
-
-            videoDatas.playedTime=videoComponents.video[0].currentTime  ;
-            videoDatas.bufferedTime=Math.round(videoComponents.video[0].buffered.end(0)) ;
-        });
-        videoComponents.playedSlide.mousedown(function(){
-            console.log("mousedown");
-            var lastscreenx;
-            $('body').on('mousemove',function(e){
-                var widthChange=0;
-                //console.log('mousemove');
-                //console.log(e);
-                if(lastscreenx){
-                    widthChange=e.screenX-lastscreenx;
-                    lastscreenx=e.screenX;
-                }else{
-                    lastscreenx=e.screenX;
-                }
-                //console.log(widthChange);
-                var width=videoComponents.playedBar.width()+widthChange;
-                if(width>videoComponents.playedBar.parent().width()){
-                    width=videoComponents.playedBar.parent().width();
-                }
-                videoComponents.playedBar.width(width);
-                //console.log(width/videoComponents.playedBar.parent().width());
-                var playtime=Math.round((width/videoComponents.playedBar.parent().width())*videoDatas.durationTime);
-                //console.log('playtime:'+playtime);
-                if (playtime<0){
-                    playtime=0;
-                }
-                if (playtime>videoDatas.durationTime) {
-                    playtime=videoDatas.durationTime;
-                }
-                //console.log('playtime:'+playtime);
-                videoDatas.playedTime=playtime;
-                //videoDatas.playedTime=Math.round(videoComponents.video[0].currentTime)
-
-
-            });
-            $('body').on('mouseup',function(){
-                console.log('mouseup');
-                $('body').off('mousemove');
-                $('body').off('mouseup');
-            });
-        })
-
-
+        //video播放控制器
+        this.bindVideoPlayControls();
         //video控制器滑入滑出
         this.bindShowControls();
+
         //播放器全屏
         videoComponents.fullPlayerFalseBtn.on('click', function () {
             console.log('click fullPlayer');
@@ -139,7 +69,7 @@ var videoControls = {
         videoComponents.video.parent().parent().mouseleave(
             function () {
                 //videoComponents.videoControls.stop(true, false).slideUp();
-                console.log("")
+                //console.log("")
                 videoDatas.showController=false;
             }
         );
@@ -167,11 +97,123 @@ var videoControls = {
         );
         videoComponents.videoControls.mouseenter(
             function () {
-                console.log('mouseeenter')
+                //console.log('mouseeenter')
+                clearTimeout(timeoutFlag);
+                timeoutFlag=null;
+            }
+        );
+        videoComponents.playedBar.mouseenter(
+            function () {
+                //console.log('mouseeenter')
                 clearTimeout(timeoutFlag);
                 timeoutFlag=null;
             }
         );
     },
+    bindVideoPlayControls:function(){
+        //初始声音0.5
+        videoComponents.video[0].volume = 0.5;
+
+        videoComponents.playBtn.on('click',function(){
+            videoDatas.play=true;
+            videoComponents.video[0].play();
+        });
+        videoComponents.pauseBtn.on('click',function(){
+            videoDatas.play=false;
+            videoComponents.video[0].pause();
+        });
+        videoComponents.video.on('loadedmetadata',function(e){
+            //console.log('loadmetadata');
+            //console.log(e);
+            videoDatas.durationTime=videoComponents.video[0].duration;
+
+            //videoDatas.playedTime=100;
+        });
+        videoComponents.video.on('play',function(){
+            console.log('play');
+            videoDatas.play=true;
+        });
+        videoComponents.video.on('pause',function(){
+            console.log('pause');
+            videoDatas.play=false;
+        });
+        videoComponents.video.on('timeupdate',function(e){
+            //console.log('timeupdate');
+            //console.log(videoComponents.video[0].currentTime);
+            videoDatas.playedTime=videoComponents.video[0].currentTime  ;
+            videoDatas.bufferedTime=Math.round(videoComponents.video[0].buffered.end(0)) ;
+        });
+        videoComponents.playedSlide.mousedown(function(){
+            console.log("mousedown");
+            var lastscreenx;
+            $('body').on('mousemove',function(e){
+                var widthChange=0;
+                console.log('mousemove');
+                //console.log(e);
+                if(lastscreenx){
+                    widthChange=e.screenX-lastscreenx;
+                    lastscreenx=e.screenX;
+                }else{
+                    lastscreenx=e.screenX;
+                }
+                //console.log(widthChange);
+                var width=videoComponents.playedBar.width()+widthChange;
+                if(width>videoComponents.playedBar.parent().width()){
+                    width=videoComponents.playedBar.parent().width();
+                }
+                videoComponents.playedBar.width(width);
+                //console.log(width/videoComponents.playedBar.parent().width());
+                //var playtime=(width/videoComponents.playedBar.parent().width())*videoDatas.durationTime;
+                var playtime=Math.round((width/videoComponents.playedBar.parent().width())*videoDatas.durationTime);
+                //console.log('playtime:'+playtime);
+                if (playtime<0){
+                    playtime=0;
+                }
+                if (playtime>videoDatas.durationTime) {
+                    playtime=videoDatas.durationTime;
+                }
+                //console.log('playtime:'+playtime);
+                videoDatas.setPlayedTime=playtime;
+                //videoDatas.playedTime=playtime;
+                //videoDatas.playedTime=Math.round(videoComponents.video[0].currentTime)
+
+
+            });
+            $('body').on('mouseup',function(){
+                onmouseupFlag=true;
+                console.log('mouseup');
+                $('body').off('mousemove');
+                $('body').off('mouseup');
+            });
+        });
+        videoComponents.playBar.click(function(e){
+            if(onmouseupFlag){
+                onmouseupFlag=false;
+                return;
+            }
+            console.log('mouse click');
+            console.log(e);
+            var width= e.offsetX;
+            if(width>videoComponents.playedBar.parent().width()){
+                width=videoComponents.playedBar.parent().width();
+            }
+            videoComponents.playedBar.width(width);
+
+            //console.log(width/videoComponents.playedBar.parent().width());
+            //var playtime=(width/videoComponents.playedBar.parent().width())*videoDatas.durationTime;
+            var playtime=Math.round((width/videoComponents.playedBar.parent().width())*videoDatas.durationTime);
+            //console.log('playtime:'+playtime);
+            if (playtime<0){
+                playtime=0;
+            }
+            if (playtime>videoDatas.durationTime) {
+                playtime=videoDatas.durationTime;
+            }
+            //console.log('playtime:'+playtime);
+            videoDatas.setPlayedTime=playtime;
+
+        })
+
+    }
 };
 videoControls.bindEvents();

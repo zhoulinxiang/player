@@ -10,10 +10,6 @@
     <ConfirmationsSetting value="0" id="Add" />
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
-  <component name="ProjectPlainTextFileTypeManager">
-    <file url="file://$PROJECT_DIR$/public/js/index-pc.js" />
-    <file url="file://$PROJECT_DIR$/public/js/index-touch.js" />
-  </component>
   <component name="ProjectRootManager" version="2" />
   <component name="SvnConfiguration">
     <configuration>$USER_HOME$/.subversion</configuration>

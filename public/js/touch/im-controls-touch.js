@@ -1,0 +1,12 @@
+imComponents.inputBar.on('keypress',function(e){
+    if(e.keyCode==13){
+        imControls.setMessage({
+            name:'我',
+            text:imDatas.text
+        });
+        imControls.sendMessage();
+        imComponents.textArea.val('');
+        //imComponents.inputBar.find('input').blur()
+    }
+    console.log(e);
+})

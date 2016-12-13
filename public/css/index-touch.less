@@ -7,7 +7,7 @@
 @height-controls: 40px;
 @leftWith: 960px;
 @rightWidth: 300px;
-@media screen and (max-width: 800px){
+@media screen {
   html, body {
     height: 100%;
   }
@@ -34,6 +34,7 @@
       }
       .content-video {
         height: auto;
+        font-size: 0;
         #video {
           width: 100%;
         }
@@ -85,6 +86,7 @@
         align-items: center;
         justify-content: center;
         background-color: @grey;
+        min-height: 40px;
         #people-num {
           flex: 1;
         }
@@ -102,13 +104,18 @@
       .content-im {
         flex: 6;
         height: auto;
+        overflow: auto;
+        img{
+          height: 1em;
+          width: 1em;
+        }
       }
       .foot {
         flex: 1;
         display: flex;
         background-color: @grey;
         justify-content: space-around;
-
+        min-height: 40px;
         align-items: center;
         //>div{
         //  align-self: center;
@@ -130,6 +137,7 @@
           margin: 0 5px;
           textarea {
             width: 100%;
+            line-height: 100%;
             resize: none;
             //height: 30px;
           }
@@ -138,6 +146,17 @@
           flex: 1;
           margin: 0 5px;
         }
+      }
+    }
+    #expression-div{
+      flex:3 ;
+      max-height: 50%;
+      .express-wrap{
+        height: 100%;
+        overflow: auto;
+      }
+      img{
+        width: 10%;
       }
     }
     .right-content-flower {
@@ -209,6 +228,12 @@
         display: flex;
         justify-content: center;
         align-content: center;
+        .el-radio-group{
+          display: flex;
+          justify-content: space-around;
+          width: 100%;
+          align-items: center;
+        }
       }
     }
 

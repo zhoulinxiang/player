@@ -11,9 +11,18 @@ var imControls = {
             });
             that.sendMessage();
         });
+
         imComponents.expressDiv.find('img').on('click',function(e){
+            //var date=new Date();
+            //console.log(date.getTime());
+            //console.log(date.getTime());
             that.selectExpression(e)
         });
+        //imComponents.expressDiv.find('img').on('touchstart',function(e){
+        //    var date=new Date();
+        //    console.log(date.getTime());
+        //    that.selectExpression(e)
+        //});
     },
     //收到聊天消息
     setMessage:function(message){

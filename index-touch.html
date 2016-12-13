@@ -25,7 +25,7 @@
         </div>
         <div class="content-video">
             <!--<video id="video" src="public/index.mp4" webkit-playsinline playsinline></video>-->
-            <video id="video" src="public/index.mp4" autoplay controls></video>
+            <video id="video" src="public/index.mp4" autoplay  playsinline controls></video>
             <!--<div class="video-controls" id="video-controls">-->
                 <!--<div class="voice-control">-->
                     <!--<span>voice:</span>-->
@@ -105,25 +105,52 @@
                 </div>
             </div>
             <div class="content-im">
-                <span>ha</span>
+                <div v-for="item in imControls.messages">
+                    <p>
+                        <span>{{item.name}}:</span>
+                        <span v-html="item.text"></span>
+                    </p>
+                </div>
             </div>
             <div class="foot">
                 <div class="flower-control just-in-touch">
                     <el-button class="show-flower" @click="switchRoute('flower')">献花</el-button>
                 </div>
                 <div id="expression">
-                    <el-button @click.native="open">表情</el-button>
+                    <el-button v-show="!imControls.showExpress" @click="switchExpress(true)">表情</el-button>
+                    <el-button v-show="imControls.showExpress" @click="switchExpress(false)">文字</el-button>
                 </div>
                 <!--<div class="full-control">-->
                     <!--<el-button>全屏</el-button>-->
                 <!--</div>-->
                 <div id="inputBar">
-                    <textarea></textarea>
+                    <!--<input id="im-textarea" v-model="imControls.text"/>-->
+                    <el-input
+                            v-model="imControls.text">
+                    </el-input>
                 </div>
                 <div id="send">
-                    <el-button>发送</el-button>
+                    <el-button id="im-send-btn">发送</el-button>
                 </div>
             </div>
+        </div>
+        <div id="expression-div" style="display: none;" v-show="route=='im'&&imControls.showExpress">
+            <div class="express-wrap">
+                <img src="public/img/emoteicon/1f3a4.png" data-key='1f3a4' alt=""/>
+                <img src="public/img/emoteicon/1f3a4.png" data-key='1f3a4' alt=""/>
+                <img src="public/img/emoteicon/1f3a4.png" data-key='1f3a4' alt=""/>
+                <img src="public/img/emoteicon/1f3a4.png" data-key='1f3a4' alt=""/>
+                <img src="public/img/emoteicon/1f3a4.png" data-key='1f3a4' alt=""/>
+                <img src="public/img/emoteicon/1f3a5.png" data-key='1f3a5' alt=""/>
+                <img src="public/img/emoteicon/1f3a5.png" data-key='1f3a5' alt=""/>
+                <img src="public/img/emoteicon/1f3a5.png" data-key='1f3a5' alt=""/>
+                <img src="public/img/emoteicon/1f3a5.png" data-key='1f3a5' alt=""/>
+                <img src="public/img/emoteicon/1f3a5.png" data-key='1f3a5' alt=""/>
+                <img src="public/img/emoteicon/1f3a5.png" data-key='1f3a5' alt=""/>
+                <img src="public/img/emoteicon/1f3a5.png" data-key='1f3a5' alt=""/>
+                <img src="public/img/emoteicon/1f3a5.png" data-key='1f3a5' alt=""/>
+            </div>
+
         </div>
         <div class="right-content-flower just-in-touch" v-flower v-show="route=='flower'" style="display: none;">
             <div class="head">
@@ -182,12 +209,19 @@
                 互动题
             </div>
             <div class="content-im">
-                <div>
-                    <el-button>A</el-button>
-                    <el-button>B</el-button>
-                    <el-button>C</el-button>
-                    <el-button>D</el-button>
-                </div>
+                <el-radio-group v-model="questionDatas.question1">
+                    <el-radio-button label="A"></el-radio-button>
+                    <el-radio-button label="B"></el-radio-button>
+                    <el-radio-button label="C"></el-radio-button>
+                    <el-radio-button label="D"></el-radio-button>
+                </el-radio-group>
+                <!-- -->
+                <!--<div>-->
+                    <!--<el-button>A</el-button>-->
+                    <!--<el-button>B</el-button>-->
+                    <!--<el-button>C</el-button>-->
+                    <!--<el-button>D</el-button>-->
+                <!--</div>-->
             </div>
             <div class="foot">
                 <div>
@@ -218,7 +252,12 @@
 <script src="public/js/fullscreen.js"></script>
 <script src="public/js/util.js"></script>
 <script src="public/js/v-directives.js"></script>
-<script src="public/js/touch/index.js"></script>
+<script src="public/js/app.param.js"></script>
+<script src="public/js/touch/index2.js"></script>
+
+<!--<script src="public/js/video-controls.js"></script>-->
+<script src="public/js/im-controls.js"></script>
+<script src="public/js/touch/im-controls-touch.js"></script>
 
 <script src="public/js/lib/hls.min.js"></script>
 <script>

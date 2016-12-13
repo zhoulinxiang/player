@@ -11,8 +11,11 @@ var app = new Vue({
     methods: {
         sendFlower: function (type) {
             console.log('send flower')
-            this.videoControls.route = '';
+            this.route='im';
             //sole.log(this.voice);
+        },
+        switchExpress:function(type){
+            this.imControls.showExpress=type;
         },
         switchRoute: function (routetmp) {
             this.route = routetmp;
@@ -20,6 +23,12 @@ var app = new Vue({
         switchAlert: function (alerttmp) {
             this.alert = alerttmp;
         },
+        open: function () {
+            this.$message('这是一条消息提示');
+        },
+        sendQuestion1:function(){
+            this.switchRoute('im');
+        }
 
     },
 

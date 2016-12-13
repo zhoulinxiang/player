@@ -24,6 +24,8 @@
                 }
                 //sole.log(this.voice);
             },
+
+
             switchRoute:function(routetmp){
                 this.route=routetmp;
             },

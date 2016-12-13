@@ -10,6 +10,7 @@ appParam.appDatas={
     //聊天控制数据
     imControls:{
         text:'',
+        showExpress:false,//touch用来展示表情
         messages:[],
 
     },
@@ -27,6 +28,8 @@ appParam.appDatas={
         play:false,
         //已播放时间
         playedTime:0,
+        //set播放时间
+        setPlayedTime:0,
         //playerbar宽度
         playedBarWidth:0,
         //已缓冲时间
@@ -34,7 +37,13 @@ appParam.appDatas={
         //视频时长
         durationTime:0
 
+    },
+    //互动题数据
+    questionDatas:{
+        //选择题答案
+        question1:'',
     }
+
 };
 function initDom(){
     appParam.videoComponents={
@@ -58,6 +67,7 @@ function initDom(){
         lockBtn: $('#im-lock-btn'),
         expressBtn: $('#im-express-btn'),
         sendBtn: $('#im-send-btn'),
+        inputBar:$('#inputBar'),
         textArea: $('#im-textarea'),
         expressDiv: $('#expression-div')
     };
