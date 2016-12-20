@@ -3,7 +3,7 @@ appParam.videoComponents={};
 appParam.imComponents={};
 appParam.appDatas={
     voice: 50,
-    //    im,flower,question
+    //    im,flower,question1
     route: 'im',
     //hongbao,
     alert: '',
@@ -73,3 +73,18 @@ function initDom(){
     };
 
 };
+//宽度撑满高度自适应
+function resize(){
+    var wrap=$('.wrap');
+    wrap.height(window.innerWidth/2.14);
+    wrap.css('margin-top',(window.innerHeight-wrap.height())/2);
+}
+$(window).on('load',function(){
+    console.log('load');
+    resize()
+
+});
+$(window).on('resize',function(){
+    console.log('resize');
+    resize()
+})
