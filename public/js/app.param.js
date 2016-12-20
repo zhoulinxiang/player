@@ -77,7 +77,11 @@ function initDom(){
 function resize(){
     var wrap=$('.wrap');
     wrap.height(window.innerWidth/2.14);
-    wrap.css('margin-top',(window.innerHeight-wrap.height())/2);
+    if((window.innerHeight-wrap.height())/2>0){
+        wrap.css('margin-top',(window.innerHeight-wrap.height())/2);
+    }else{
+        wrap.css('margin-top',0);
+    }
 }
 $(window).on('load',function(){
     console.log('load');
