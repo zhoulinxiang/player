@@ -15,7 +15,7 @@ var app = new Vue({
             //sole.log(this.voice);
         },
         switchRoute: function (routetmp) {
-            this.route = routetmp;
+            this.videoControls.route = routetmp;
         },
         switchAlert: function (alerttmp) {
             this.alert = alerttmp;

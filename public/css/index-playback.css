@@ -133,6 +133,7 @@
   }
   .wrap .left-content .content-video .bottom-controls .video-controls {
     height: 40px;
+    position: static;
     width: 100%;
     background-color: #eee;
     display: flex;

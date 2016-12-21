@@ -3,11 +3,13 @@
     width: 100%;
     min-height: 600px;
     min-width: 1280px;
+    max-width: 1550px;
+    margin: 0px auto;
     overflow: hidden;
     display: flex;
   }
   .wrap .left-content {
-    width: 75%;
+    flex: 1;
     height: 100%;
     float: left;
     display: flex;
@@ -118,7 +120,7 @@
     height: 100%;
   }
   .wrap .right-wrap {
-    width: 25%;
+    width: 320px;
     float: left;
     position: relative;
     height: 100%;
