@@ -223,6 +223,12 @@
     width: 1em;
     height: 1em;
   }
+  .wrap .right-wrap .right-content .content-im p {
+    word-wrap: break-word;
+  }
+  .wrap .right-wrap .right-content .content-im span {
+    overflow: hidden;
+  }
   .wrap .right-wrap .right-content .foot {
     height: 60px;
     background-color: #eee;
