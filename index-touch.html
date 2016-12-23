@@ -20,7 +20,7 @@
 <body>
 <div id="app" class="wrap" v-cloak>
     <div class="left-content">
-        <div class="head">
+        <div class="head" v-show="videoControls.showtTitle">
             <h1>讲座标题讲座标题讲座标题讲座标题讲座标题</h1>
         </div>
         <div class="content-video">
@@ -96,12 +96,17 @@
     <div class="right-wrap">
         <div class="right-content" v-show="route=='im'">
             <div class="head">
-                <div id="people-num">
-                    <span>在线听众：965人</span>
+                <div class="spance"> </div>
+                <div id="people-num" class="flex-box-cneter">
+                    在线 <span>50</span>人
                 </div>
                 <div class="im-controls">
-                    <el-button>清屏</el-button>
-                    <el-button>锁屏</el-button>
+                    <div class="clear-im">
+                        <img src="public/img/clear-im.png" alt=""/>
+                    </div>
+                    <div class="block-im">
+                        <img src="public/img/blocking-im.png" alt=""/>
+                    </div>
                 </div>
             </div>
             <div class="content-im">
@@ -114,27 +119,39 @@
             </div>
             <div class="foot">
                 <div class="flower-control just-in-touch">
-                    <el-button class="show-flower" @click="switchRoute('flower')">献花</el-button>
+                    <img src="public/img/flower-icon1.png" v-show="imControls.route!='flower'&&imControls.canFlower" @click="switchImControlsRoute('flower')"alt=""/>
+                    <img src="public/img/keyboard-icon.png" v-show="imControls.route=='flower'&&imControls.canFlower" @click="switchImControlsRoute('flower')"alt=""/>
+                    <img src="public/img/flower-icon2.png" v-show="!imControls.canFlower" alt=""/>
+                    <!--<el-button class="show-flower" >献花</el-button>-->
                 </div>
-                <div id="expression">
-                    <el-button v-show="!imControls.showExpress" @click="switchExpress(true)">表情</el-button>
-                    <el-button v-show="imControls.showExpress" @click="switchExpress(false)">文字</el-button>
-                </div>
+
                 <!--<div class="full-control">-->
                     <!--<el-button>全屏</el-button>-->
                 <!--</div>-->
                 <div id="inputBar">
                     <!--<input id="im-textarea" v-model="imControls.text"/>-->
-                    <el-input
-                            v-model="imControls.text">
+                    <el-input v-model="imControls.text" placeholder="请输入文字">
                     </el-input>
                 </div>
+
+                <div id="expression">
+                    <img src='public/img/emo-icon.png' v-show="imControls.route!='express'" @click="switchImControlsRoute('express')">
+                    </img>
+                    <img src='public/img/keyboard-icon.png' v-show="imControls.route=='express'" @click="switchImControlsRoute('express')">
+                    </img>
+                    <!--<el-button v-show="!imControls.showExpress" @click="switchExpress(true)">表情</el-button>-->
+                    <!--<el-button v-show="imControls.showExpress" @click="switchExpress(false)">文字</el-button>-->
+                </div>
                 <div id="send">
-                    <el-button id="im-send-btn">发送</el-button>
+                        <img src="public/img/send-icon.png" id="im-send-btn">
+
+                        </img>
+                    <!--<button>hahahahah</button>-->
+                    <!--<el-button id="im-send-btn">发送</el-button>-->
                 </div>
             </div>
         </div>
-        <div id="expression-div" style="display: none;" v-show="route=='im'&&imControls.showExpress">
+        <div id="expression-div" style="display: none;" v-show="imControls.route=='express'">
             <div class="express-wrap">
                 <img src="public/img/emoteicon/1f3a4.png" data-key='1f3a4' alt=""/>
                 <img src="public/img/emoteicon/1f3a4.png" data-key='1f3a4' alt=""/>
@@ -150,81 +167,107 @@
                 <img src="public/img/emoteicon/1f3a5.png" data-key='1f3a5' alt=""/>
                 <img src="public/img/emoteicon/1f3a5.png" data-key='1f3a5' alt=""/>
             </div>
-
         </div>
-        <div class="right-content-flower just-in-touch" v-flower v-show="route=='flower'" style="display: none;">
-            <div class="head">
-                献花
-            </div>
+        <div class="right-content-flower just-in-touch" v-flower v-show="imControls.route=='flower'" style="display: none;">
+            <!--<div class="head">-->
+                <!--献花-->
+            <!--</div>-->
             <div class="content-im" v-select-one data-selectid="flower">
                 <div class="flower">
-                    <img src="" alt=""/>
+                    <div class="flower-item-wrap flex-box-cneter">
+                        <img src="public/img/flower1.png" style='height: 44px;' alt=""/>
+                    </div>
 
                     <p class="flower-name">
-                        蓝色妖姬
-                    </p>
-
-                    <p class="flower-price">
-                        <span>100</span>
+                        1枝玫瑰
+                        <span>10</span>
                         金币
                     </p>
+                    <img class="select nos" src='public/img/noselect.png' style="height: 20px;" alt=""/>
+                    <img class="select ons" src='public/img/select.png' style="height: 20px;" alt=""/>
                 </div>
                 <div class="flower">
-                    <img src="" alt=""/>
+                    <div class="flower-item-wrap flex-box-cneter">
+                        <img src="public/img/flower2.png" alt=""/>
+                    </div>
 
                     <p class="flower-name">
-                        蓝色妖姬
-                    </p>
-
-                    <p class="flower-price">
-                        <span>100</span>
+                        1束玫瑰
+                        <span>50</span>
                         金币
                     </p>
+                    <img class="select nos" src='public/img/noselect.png' style="height: 20px;" alt=""/>
+                    <img class="select ons" src='public/img/select.png' style="height: 20px;" alt=""/>
                 </div>
                 <div class="flower">
-                    <img src="" alt=""/>
-
+                    <div class="flower-item-wrap flex-box-cneter">
+                        <img src="public/img/flower3.png" alt=""/>
+                    </div>
                     <p class="flower-name">
-                        蓝色妖姬
-                    </p>
-
-                    <p class="flower-price">
+                        1束蓝色妖姬
                         <span>100</span>
                         金币
                     </p>
+                    <img class="select nos" src='public/img/noselect.png' style="height: 20px;" alt=""/>
+                    <img class="select ons" src='public/img/select.png' style="height: 20px;" alt=""/>
                 </div>
             </div>
             <div class="foot">
-                <p>我的金币余额：<span>1586</span></p>
-                <el-button class="flower-confirm" @click="sendFlower('touch')">
-                    确定
-                </el-button>
-                <el-button  class="flower-confirm" @click="sendFlower('touch')">
-                    取消
-                </el-button>
+                <div class="gold-num">
+                    <p>余额：<span>1586</span>金币</p>
+                </div>
+                <div class="send-control">
+                    <el-button class="flower-confirm" @click="sendFlower()">
+                        确定
+                    </el-button>
+                    <el-button  class="flower-confirm" @click="sendFlower()">
+                        取消
+                    </el-button>
+                </div>
             </div>
         </div>
         <div class="right-content right-content-question-1" v-show="route=='question1'" style="display: none;">
             <div class="head">
                 互动题
             </div>
-            <div class="content-im">
-                <el-radio-group v-model="questionDatas.question1">
-                    <el-radio-button label="A"></el-radio-button>
-                    <el-radio-button label="B"></el-radio-button>
-                    <el-radio-button label="C"></el-radio-button>
-                    <el-radio-button label="D"></el-radio-button>
-                </el-radio-group>
-                <!-- -->
-                <!--<div>-->
-                    <!--<el-button>A</el-button>-->
-                    <!--<el-button>B</el-button>-->
-                    <!--<el-button>C</el-button>-->
-                    <!--<el-button>D</el-button>-->
-                <!--</div>-->
+            <div class="content-im " v-select-one data-selectid="question-select">
+                <div class="question-select flex-box-cneter">
+                    <div class="select-wrap flex-box-cneter" @click="setQuestion1('A')">
+                        A
+                    </div>
+                </div>
+                <div class="question-select flex-box-cneter">
+                    <div class="select-wrap flex-box-cneter" @click="setQuestion1('B')">
+                        B
+                    </div>
+                </div>
+                <div class="question-select flex-box-cneter">
+                    <div class="select-wrap flex-box-cneter" @click="setQuestion1('B')">
+                        C
+                    </div>
+                </div>
             </div>
+
+            <!--<div class="content-im">-->
+                <!--<el-radio-group v-model="questionDatas.question1">-->
+                    <!--<el-radio-button label="A"></el-radio-button>-->
+                    <!--<el-radio-button label="B"></el-radio-button>-->
+                    <!--<el-radio-button label="C"></el-radio-button>-->
+                    <!--<el-radio-button label="D"></el-radio-button>-->
+                <!--</el-radio-group>-->
+                <!--&lt;!&ndash; &ndash;&gt;-->
+                <!--&lt;!&ndash;<div>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<el-button>A</el-button>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<el-button>B</el-button>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<el-button>C</el-button>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<el-button>D</el-button>&ndash;&gt;-->
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--</div>-->
             <div class="foot">
-                <div>
+                <div class="answer">
+                    你的选择是:<span >{{questionDatas.question1}}</span>
+                </div>
+                <div class="done">
                     <el-button @click="sendQuestion1()">提交</el-button>
                 </div>
             </div>
@@ -253,12 +296,12 @@
 <script src="public/js/util.js"></script>
 <script src="public/js/v-directives.js"></script>
 <script src="public/js/app.param.js"></script>
-<script src="public/js/touch/index2.js"></script>
+<script src="public/js/touch/index-touch.js"></script>
 
 <!--<script src="public/js/video-controls.js"></script>-->
 <script src="public/js/im-controls.js"></script>
 <script src="public/js/touch/im-controls-touch.js"></script>
-
+<script src="public/js/touch/video-controls.js"></script>
 <script src="public/js/lib/hls.min.js"></script>
 <script>
 //    if(Hls.isSupported()) {

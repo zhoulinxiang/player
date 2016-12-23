@@ -15,15 +15,21 @@
     height: auto;
   }
   #app .left-content .head {
-    background-color: #eee;
+    background-color: #000;
     opacity: 0.5;
-    height: 20px;
+    height: 44px;
     width: 100%;
     position: absolute;
     z-index: 1;
   }
   #app .left-content .head h1 {
     text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #fff;
+    font-size: 19px;
+    line-height: 44px;
   }
   #app .left-content .content-video {
     height: auto;
@@ -66,26 +72,37 @@
     justify-content: center;
   }
   #app .right-content {
-    height: 100%;
+    flex: 1;
     display: flex;
     flex-direction: column;
     width: 100%;
   }
   #app .right-content .head {
-    flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #eee;
+    border-bottom: 1px solid #dcdcdc;
     min-height: 40px;
+    height: 40px;
+    padding: 0 20px;
+  }
+  #app .right-content .head .spance {
+    flex: 1;
   }
   #app .right-content .head #people-num {
     flex: 1;
+    font-size: 16px;
   }
   #app .right-content .head .im-controls {
     flex: 1;
     display: flex;
     justify-content: flex-end;
+  }
+  #app .right-content .head .im-controls .clear-im {
+    margin-right: 18px;
+  }
+  #app .right-content .head .im-controls img {
+    height: 22px;
   }
   #app .right-content .content-im {
     flex: 6;
@@ -97,40 +114,49 @@
     width: 1em;
   }
   #app .right-content .foot {
-    flex: 1;
     display: flex;
     background-color: #eee;
     justify-content: space-around;
     min-height: 40px;
+    height: 55px;
     align-items: center;
+    padding: 0 5px;
+    border-top: 1px solid #dcdcdc;
+  }
+  #app .right-content .foot img {
+    height: 30px;
   }
   #app .right-content .foot .flower-control {
-    flex: 1;
     display: block !important;
     margin: 0 5px;
+  }
+  #app .right-content .foot .flower-controlhover {
+    background-color: red;
   }
   #app .right-content .foot .flower-control .flower-content {
     display: none;
   }
   #app .right-content .foot #expression {
-    flex: 1;
     margin: 0 5px;
+  }
+  #app .right-content .foot #expressionhover {
+    background-color: red;
   }
   #app .right-content .foot #inputBar {
     flex: 7;
     margin: 0 5px;
   }
-  #app .right-content .foot #inputBar textarea {
-    width: 100%;
-    line-height: 100%;
-    resize: none;
+  #app .right-content .foot #inputBar input {
+    height: 40px;
+    border-radius: 20px;
   }
   #app .right-content .foot #send {
-    flex: 1;
     margin: 0 5px;
   }
+  #app .right-content .foot #send:active {
+    background-color: red;
+  }
   #app #expression-div {
-    flex: 3 ;
     max-height: 50%;
   }
   #app #expression-div .express-wrap {
@@ -141,76 +167,113 @@
     width: 10%;
   }
   #app .right-content-flower {
-    height: 100%;
+    height: 175px;
     display: flex;
     flex-direction: column;
     width: 100%;
-  }
-  #app .right-content-flower .head {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #eee;
   }
   #app .right-content-flower .content-im {
-    flex: 6;
+    height: 125px;
     display: flex;
+    flex-direction: row;
   }
   #app .right-content-flower .content-im .flower {
-    width: 33%;
-    height: 60px;
+    flex: 1;
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
   }
-  #app .right-content-flower .content-im .flower.active {
-    background-color: #aaa;
+  #app .right-content-flower .content-im .flower .flower-item-wrap {
+    height: 75px;
+    width: 75px;
   }
-  #app .right-content-flower .foot {
-    flex: 1;
-    display: flex;
-    background-color: #eee;
-    justify-content: space-around;
-    align-items: center;
+  #app .right-content-flower .content-im .flower img {
+    height: 75px;
   }
-  #app .right-content-flower .foot .flower-control {
-    flex: 1;
-    display: block !important;
-    margin: 0 5px;
+  #app .right-content-flower .content-im .flower .flower-name {
+    font-size: 11px;
+    margin-top: 7px;
   }
-  #app .right-content-flower .foot .flower-control .flower-content {
+  #app .right-content-flower .content-im .flower .flower-name span {
+    margin-left: 5px;
+    color: #4dbcff;
+  }
+  #app .right-content-flower .content-im .flower .select {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  #app .right-content-flower .content-im .flower .select.ons {
     display: none;
   }
-  #app .right-content-flower .foot #expression {
-    flex: 1;
-    margin: 0 5px;
+  #app .right-content-flower .content-im .flower.active .select {
+    display: none;
   }
-  #app .right-content-flower .foot #inputBar {
-    flex: 7;
-    margin: 0 5px;
+  #app .right-content-flower .content-im .flower.active .select.ons {
+    display: block;
   }
-  #app .right-content-flower .foot #inputBar textarea {
-    width: 100%;
-    resize: none;
-  }
-  #app .right-content-flower .foot #send {
-    flex: 1;
-    margin: 0 5px;
-  }
-  #app .right-content-question-1 .content-im {
+  #app .right-content-flower .foot {
+    height: 50px;
     display: flex;
-    justify-content: center;
-    align-content: center;
-  }
-  #app .right-content-question-1 .content-im .el-radio-group {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
+    border-top: 1px solid #eee;
     align-items: center;
+    padding: 0 10px;
+  }
+  #app .right-content-flower .foot .gold-num {
+    flex: 1;
+  }
+  #app .right-content-flower .foot .gold-num p span {
+    color: #4dbcff;
+    font-size: 14px;
+  }
+  #app .right-content-flower .foot .send-control {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+  }
+  #app .right-content-question-1 .content-im .question-select {
+    width: 50%;
+    height: 50%;
+    float: left;
+  }
+  #app .right-content-question-1 .content-im .question-select .select-wrap {
+    height: 90px;
+    width: 90px;
+    border-radius: 45px;
+    border: 1px solid #dcdcdc;
+    font-size: 50px;
+  }
+  #app .right-content-question-1 .content-im .question-select.active .select-wrap {
+    background-color: #20abff;
+    color: #fff;
+  }
+  #app .right-content-question-1 .foot {
+    display: flex;
+    padding: 0 10px;
+    background-color: #fff;
+  }
+  #app .right-content-question-1 .foot .answer {
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+  #app .right-content-question-1 .foot .answer span {
+    font-size: 25px;
+    color: #20abff;
+  }
+  #app .right-content-question-1 .foot .done {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
   }
   [v-cloak] {
     display: none;
+  }
+  .flex-box-cneter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }

@@ -36,6 +36,8 @@ Vue.directive('select-one', {
         el=$(el);
         var selectId=el[0].dataset.selectid;
         var slectItem=el.children('.'+selectId);
+        var clearItem=el.children('.select-confirm');
+
         //选择控制
         slectItem.on('click',function(e){
             //console.log(flowers);
@@ -46,5 +48,9 @@ Vue.directive('select-one', {
             //console.log(e);
             $(e.currentTarget).addClass('active');
         });
+
+        clearItem.on('click',function(){
+            slectItem.removeClass('active');
+        })
     }
 })

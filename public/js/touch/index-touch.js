@@ -11,11 +11,15 @@ var app = new Vue({
     methods: {
         sendFlower: function (type) {
             console.log('send flower')
-            this.route='im';
+            this.imControls.route='';
             //sole.log(this.voice);
         },
-        switchExpress:function(type){
-            this.imControls.showExpress=type;
+        switchImControlsRoute:function(type){
+            if(type==this.imControls.route){
+                this.imControls.route='';
+            }else{
+                this.imControls.route=type;
+            }
         },
         switchRoute: function (routetmp) {
             this.route = routetmp;
@@ -28,7 +32,15 @@ var app = new Vue({
         },
         sendQuestion1:function(){
             this.switchRoute('im');
+        },
+
+
+        //common methods
+        //set 单项选择题答案
+        setQuestion1:function(answer){
+            this.questionDatas.question1=answer;
         }
+
 
     },
 

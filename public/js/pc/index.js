@@ -102,5 +102,23 @@ var app = new Vue({
         }
     }
 });
+//PC端 宽度撑满高度自适应
+function resize(){
+    var wrap=$('.wrap');
+    wrap.height(window.innerWidth/2.14);
+    if((window.innerHeight-wrap.height())/2>0){
+        wrap.css('margin-top',(window.innerHeight-wrap.height())/2);
+    }else{
+        wrap.css('margin-top',0);
+    }
+}
+$(window).on('load',function(){
+    console.log('load');
+    resize()
 
+});
+$(window).on('resize',function(){
+    console.log('resize');
+    resize()
+})
 //});
