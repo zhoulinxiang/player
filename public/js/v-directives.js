@@ -52,5 +52,26 @@ Vue.directive('select-one', {
         clearItem.on('click',function(){
             slectItem.removeClass('active');
         })
-    }
+    },
+    //update:function (el, binding, vnode) {
+    //    el=$(el);
+    //    var selectId=el[0].dataset.selectid;
+    //    var slectItem=el.children('.'+selectId);
+    //    var clearItem=el.children('.select-confirm');
+    //
+    //    //选择控制
+    //    slectItem.on('click',function(e){
+    //        //console.log(flowers);
+    //        slectItem.removeClass('active');
+    //        //for(var i=0;i<flowers.length;i++){
+    //        //    $(flowers[i]).removeClass('active');
+    //        //}
+    //        //console.log(e);
+    //        $(e.currentTarget).addClass('active');
+    //    });
+    //
+    //    clearItem.on('click',function(){
+    //        slectItem.removeClass('active');
+    //    })
+    //},
 })

@@ -44,8 +44,12 @@ appParam.appDatas={
     },
     //互动题数据
     questionDatas:{
+        type:1,//互动题类型，1：单选题 2：填空题
+        num:4,//答题参数，比如单选题选项个数
         //单向选择题答案
         question1:'',
+        //填空题答案
+        question2:[],
     }
 
 };

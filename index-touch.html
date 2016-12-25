@@ -97,7 +97,7 @@
         <div class="right-content" v-show="route=='im'">
             <div class="head">
                 <div class="spance"> </div>
-                <div id="people-num" class="flex-box-cneter">
+                <div id="people-num" class="flex-box-center">
                     在线 <span>50</span>人
                 </div>
                 <div class="im-controls">
@@ -226,43 +226,17 @@
                 </div>
             </div>
         </div>
-        <div class="right-content right-content-question-1" v-show="route=='question1'" style="display: none;">
+        <div class="right-content right-content-question-1" v-if="route=='question1'">
             <div class="head">
                 互动题
             </div>
             <div class="content-im " v-select-one data-selectid="question-select">
-                <div class="question-select flex-box-cneter">
-                    <div class="select-wrap flex-box-cneter" @click="setQuestion1('A')">
-                        A
-                    </div>
-                </div>
-                <div class="question-select flex-box-cneter">
-                    <div class="select-wrap flex-box-cneter" @click="setQuestion1('B')">
-                        B
-                    </div>
-                </div>
-                <div class="question-select flex-box-cneter">
-                    <div class="select-wrap flex-box-cneter" @click="setQuestion1('B')">
-                        C
+                <div class="question-select flex-box-center" v-for='n in questionDatas.num'>
+                    <div class="select-wrap flex-box-center" @click="setQuestion1(String.fromCharCode('A'.charCodeAt()+n-1))">
+                        {{String.fromCharCode('A'.charCodeAt()+n-1)}}
                     </div>
                 </div>
             </div>
-
-            <!--<div class="content-im">-->
-                <!--<el-radio-group v-model="questionDatas.question1">-->
-                    <!--<el-radio-button label="A"></el-radio-button>-->
-                    <!--<el-radio-button label="B"></el-radio-button>-->
-                    <!--<el-radio-button label="C"></el-radio-button>-->
-                    <!--<el-radio-button label="D"></el-radio-button>-->
-                <!--</el-radio-group>-->
-                <!--&lt;!&ndash; &ndash;&gt;-->
-                <!--&lt;!&ndash;<div>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<el-button>A</el-button>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<el-button>B</el-button>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<el-button>C</el-button>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<el-button>D</el-button>&ndash;&gt;-->
-                <!--&lt;!&ndash;</div>&ndash;&gt;-->
-            <!--</div>-->
             <div class="foot">
                 <div class="answer">
                     你的选择是:<span >{{questionDatas.question1}}</span>
@@ -272,6 +246,27 @@
                 </div>
             </div>
         </div>
+        <div class="right-content right-content-question-2" v-if="route=='question2'">
+            <div class="head">
+                互动题
+            </div>
+            <div class="content-im ">
+                <div class="question-input flex-box-center" v-for='n in questionDatas.num'>
+                    <div class="input-wrap flex-box-center">
+                        <el-input v-model="questionDatas.question2[n-1]"></el-input>
+                    </div>
+                </div>
+            </div>
+            <div class="foot">
+                <!--<div class="answer">-->
+                    <!--你的选择是:<span >{{questionDatas.question1}}</span>-->
+                <!--</div>-->
+                <div class="done">
+                    <el-button @click="sendQuestion2()">提交</el-button>
+                </div>
+            </div>
+        </div>
+
         <div class="alert alert-hongbao" v-show="alert=='hongbao'" style="display: none;">
             <div class="content-hongbao">
                 <img src="" alt=""/>

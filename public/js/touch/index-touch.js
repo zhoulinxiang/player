@@ -21,8 +21,19 @@ var app = new Vue({
                 this.imControls.route=type;
             }
         },
-        switchRoute: function (routetmp) {
+        switchRoute: function (routetmp,num) {
+            //'question1':单选答题页面，'question2':填空答题页面,'im':聊天页面
             this.route = routetmp;
+            if(!num){
+                num=4;
+            }
+            if(routetmp=='question1'){
+                this.questionDatas.type=1;
+                this.questionDatas.num=num;
+            }else if(routetmp=='question2'){
+                this.questionDatas.type=2;
+                this.questionDatas.num=num;
+            }
         },
         switchAlert: function (alerttmp) {
             this.alert = alerttmp;
@@ -32,6 +43,11 @@ var app = new Vue({
         },
         sendQuestion1:function(){
             this.switchRoute('im');
+            this.questionDatas.question1='';
+        },
+        sendQuestion2:function(){
+            this.switchRoute('im');
+            this.questionDatas.question2='';
         },
 
 
@@ -46,6 +62,7 @@ var app = new Vue({
 
     mounted: function () {
         initDom();
+        this.route='question2';
         //video = $('#video')[0];
         //videoControls = $('#video-controls');
         //video.volume = 0.5;

@@ -131,6 +131,8 @@
         flex: 6;
         height: auto;
         overflow: auto;
+        font-size: 15px;
+        line-height: 25px;
         img{
           height: 1em;
           width: 1em;
@@ -187,10 +189,10 @@
         #send {
           //flex: 1;
           margin: 0 5px;
-          &:active{
-            //color: red;
-            background-color: red;
-          }
+          //&:active{
+          //  //color: red;
+          //  background-color: red;
+          //}
         }
       }
     }
@@ -370,13 +372,32 @@
         }
       }
     }
+    .right-content-question-2{
+      .content-im{
+        padding: 40px 0;
+        .input-wrap{
+          width: 70%;
+          margin-top: 20px;
+          .el-input{
+            width: 100%;
+            height: 40px;
+
+          }
+        }
+      }
+      .foot{
+        justify-content: flex-end;
+        padding: 0 10px;
+        background-color: #ffffff;
+      }
+    }
 
   }
 
   [v-cloak] {
     display: none;
   }
-  .flex-box-cneter{
+  .flex-box-center{
     display: flex;
     align-items: center;
     justify-content: center;
