@@ -35,26 +35,29 @@ var app = new Vue({
                 this.questionDatas.num=num;
             }
         },
-        switchAlert: function (alerttmp) {
+        switchAlert: function (alerttmp,num) {
             this.alert = alerttmp;
+            this.alertNum=num;
         },
         open: function () {
             this.$message('这是一条消息提示');
         },
         sendQuestion1:function(){
-            this.switchRoute('im');
-            this.questionDatas.question1='';
+            // this.switchRoute('im');
+            // this.questionDatas.question1='';
         },
         sendQuestion2:function(){
-            this.switchRoute('im');
-            this.questionDatas.question2='';
+            // this.switchRoute('im');
+            // this.questionDatas.question2='';
         },
-
 
         //common methods
         //set 单项选择题答案
         setQuestion1:function(answer){
             this.questionDatas.question1=answer;
+        },
+        setFlowerType:function(type){
+            this.imControls.flowerType=type;
         }
 
 
@@ -62,7 +65,7 @@ var app = new Vue({
 
     mounted: function () {
         initDom();
-        this.route='question2';
+        //this.route='question2';
         //video = $('#video')[0];
         //videoControls = $('#video-controls');
         //video.volume = 0.5;
@@ -138,6 +141,32 @@ var app = new Vue({
                 n = value % 60;
             return ((m >= 10) ? m : ('0' + m)) + ':' + ((n >= 10) ? n : ('0' + n));
         }
+    },
+    computed: {
+        // a computed getter
+        imText: function () {
+            // `this` points to the vm instance
+            // return this.imControls.text.replace(/\[e\]em_1\[e\]/g,'[e]开心[e]')
+            //     .replace(/\[e\]em_2\[e\]/g,'[e]大笑[e]')
+            //     .replace(/\[e\]em_3\[e\]/g,'[e]脸红[e]')
+            //     .replace(/\[e\]em_4\[e\]/g,'[e]满意[e]')
+            //     .replace(/\[e\]em_5\[e\]/g,'[e]漏齿笑[e]')
+            //     .replace(/\[e\]em_6\[e\]/g,'[e]大笑[e]')
+            //     .replace(/\[e\]em_7\[e\]/g,'[e]大笑[e]')
+            //     .replace(/\[e\]em_8\[e\]/g,'[e]大笑[e]')
+            //     .replace(/\[e\]em_9\[e\]/g,'[e]大笑[e]')
+            //     .replace(/\[e\]em_10\[e\]/g,'[e]大笑[e]')
+            //     .replace(/\[e\]em_11\[e\]/g,'[e]大笑[e]')
+            //     .replace(/\[e\]em_12\[e\]/g,'[e]大笑[e]')
+            //     .replace(/\[e\]em_13\[e\]/g,'[e]大笑[e]')
+            //     .replace(/\[e\]em_14\[e\]/g,'[e]开心[e]')
+            //     .replace(/\[e\]em_15\[e\]/g,'[e]开心[e]')
+            //     .replace(/\[e\]em_16\[e\]/g,'[e]开心[e]')
+            //     .replace(/\[e\]em_17\[e\]/g,'[e]开心[e]')
+            //     ;
+        }
+    },
+    filters: {
     }
 });
 

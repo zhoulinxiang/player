@@ -7,6 +7,9 @@ appParam.appDatas={
     route: 'im',
     //hongbao,
     alert: '',
+    alertNum:0,//alert中数字
+    peopleNum:0,
+    money:0,
     //聊天控制数据
     imControls:{
         text:'',
@@ -14,6 +17,10 @@ appParam.appDatas={
         route:'',//touch端使用 flower,express
         canFlower:true,//是否可送花
         messages:[],
+        //聊天区消息提示
+        message:'',
+        flowerType:null,
+
 
     },
     //播放器控制数据
@@ -39,7 +46,9 @@ appParam.appDatas={
         //已缓冲时间
         bufferedTime:0,
         //视频时长
-        durationTime:0
+        durationTime:0,
+        //视频区提示信息
+        message:''
 
     },
     //互动题数据
@@ -69,6 +78,7 @@ function initDom(){
         bufferedBar:$('.bufferd-bar'),
         playedBar:$('.played'),
         playedSlide:$('.played-slide'),
+        videoMessage:$('.video-message')
     };
     appParam.imComponents = {
         clearBtn: $('#im-clear-btn'),
@@ -77,7 +87,9 @@ function initDom(){
         sendBtn: $('#im-send-btn'),
         inputBar:$('#inputBar'),
         textArea: $('#im-textarea'),
-        expressDiv: $('#expression-div')
+        expressDiv: $('#expression-div'),
+        contentIm:$('.content-im'),
+
     };
 
 };

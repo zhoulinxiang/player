@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <!--<meta name="viewport" content="width=device-width">-->
     <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">-->
-    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no,minimal-ui">
-    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <!--<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0,minimal-ui">-->
+    <!--<meta name="apple-mobile-web-app-capable" content="yes" />-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <title></title>
     <!-- 引入样式 -->
     <link rel="stylesheet" href="public/css/lib/element-index.css">
@@ -26,79 +27,16 @@
         <div class="content-video">
             <!--<video id="video" src="public/index.mp4" webkit-playsinline playsinline></video>-->
             <video id="video" src="public/index.mp4" autoplay  playsinline controls></video>
-            <!--<div class="video-controls" id="video-controls">-->
-                <!--<div class="voice-control">-->
-                    <!--<span>voice:</span>-->
-
-                    <!--<div class="voice-wrap">-->
-                        <!--&lt;!&ndash;<slider v-model="voice"></slider>&ndash;&gt;-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<div class="flower-control" v-flower >-->
-                    <!--<el-button class="show-flower">献花</el-button>-->
-                    <!--<div class="flower-content">-->
-                        <!--<div class="flower">-->
-                            <!--<img src="" alt=""/>-->
-
-                            <!--<p class="flower-name">-->
-                                <!--蓝色妖姬-->
-                            <!--</p>-->
-
-                            <!--<p class="flower-price">-->
-                                <!--<span>100</span>-->
-                                <!--金币-->
-                            <!--</p>-->
-                        <!--</div>-->
-                        <!--<div class="flower">-->
-                            <!--<img src="" alt=""/>-->
-
-                            <!--<p class="flower-name">-->
-                                <!--蓝色妖姬-->
-                            <!--</p>-->
-
-                            <!--<p class="flower-price">-->
-                                <!--<span>100</span>-->
-                                <!--金币-->
-                            <!--</p>-->
-                        <!--</div>-->
-                        <!--<div class="flower">-->
-                            <!--<img src="" alt=""/>-->
-
-                            <!--<p class="flower-name">-->
-                                <!--蓝色妖姬-->
-                            <!--</p>-->
-
-                            <!--<p class="flower-price">-->
-                                <!--<span>100</span>-->
-                                <!--金币-->
-                            <!--</p>-->
-                        <!--</div>-->
-                        <!--<div class="flower-confirm">-->
-                            <!--<p>我的金币余额：<span>1586</span></p>-->
-                            <!--<el-button class="flower-confirm" @click="sendFlower">-->
-                                <!--确定-->
-                            <!--</el-button>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<div class="problem-control">-->
-                    <!--<el-button>题目获取</el-button>-->
-                <!--</div>-->
-                <!--<div class="full-play-control">-->
-                    <!--<el-button>播放器全屏</el-button>-->
-                <!--</div>-->
-                <!--<div class="full-control">-->
-                    <!--<el-button>网页全屏</el-button>-->
-                <!--</div>-->
-            <!--</div>-->
+            <div class="video-message" v-show="videoControls.message">{{videoControls.message}}</div>
+            <div class="barrage"></div>
         </div>
     </div>
     <div class="right-wrap">
-        <div class="right-content" v-show="route=='im'">
+        <div class="right-content right-content-im" v-show="route=='im'">
             <div class="head">
                 <div class="spance"> </div>
                 <div id="people-num" class="flex-box-center">
-                    在线 <span>50</span>人
+                    在线 <span>{{peopleNum}}</span>人
                 </div>
                 <div class="im-controls">
                     <div class="clear-im">
@@ -112,9 +50,15 @@
             <div class="content-im">
                 <div v-for="item in imControls.messages">
                     <p>
-                        <span>{{item.name}}:</span>
+                        <span class="" v-if="item.type==3">{{item.name}}:</span>
+                        <span class="red" v-if="item.type==4">{{item.name}}:</span>
+                        <span class="blue" v-if="item.type==2">{{item.name}}:</span>
+                        <span class="grey" v-if="item.type==1">{{item.name}}:</span>
                         <span v-html="item.text"></span>
                     </p>
+                </div>
+                <div class="im-message" v-show="imControls.message">
+                    <div>{{imControls.message}}</div>
                 </div>
             </div>
             <div class="foot">
@@ -130,7 +74,7 @@
                 <!--</div>-->
                 <div id="inputBar">
                     <!--<input id="im-textarea" v-model="imControls.text"/>-->
-                    <el-input v-model="imControls.text" placeholder="请输入文字">
+                    <el-input v-model="imControls.text"  placeholder="请输入文字" id="test" class="test">
                     </el-input>
                 </div>
 
@@ -144,36 +88,47 @@
                 </div>
                 <div id="send">
                         <img src="public/img/send-icon.png" id="im-send-btn">
-
                         </img>
                     <!--<button>hahahahah</button>-->
                     <!--<el-button id="im-send-btn">发送</el-button>-->
                 </div>
             </div>
         </div>
-        <div id="expression-div" style="display: none;" v-show="imControls.route=='express'">
+        <div id="expression-div" style="display: none;" v-show="route=='im'&&imControls.route=='express'">
             <div class="express-wrap">
-                <img src="public/img/emoteicon/1f3a4.png" data-key='1f3a4' alt=""/>
-                <img src="public/img/emoteicon/1f3a4.png" data-key='1f3a4' alt=""/>
-                <img src="public/img/emoteicon/1f3a4.png" data-key='1f3a4' alt=""/>
-                <img src="public/img/emoteicon/1f3a4.png" data-key='1f3a4' alt=""/>
-                <img src="public/img/emoteicon/1f3a4.png" data-key='1f3a4' alt=""/>
-                <img src="public/img/emoteicon/1f3a5.png" data-key='1f3a5' alt=""/>
-                <img src="public/img/emoteicon/1f3a5.png" data-key='1f3a5' alt=""/>
-                <img src="public/img/emoteicon/1f3a5.png" data-key='1f3a5' alt=""/>
-                <img src="public/img/emoteicon/1f3a5.png" data-key='1f3a5' alt=""/>
-                <img src="public/img/emoteicon/1f3a5.png" data-key='1f3a5' alt=""/>
-                <img src="public/img/emoteicon/1f3a5.png" data-key='1f3a5' alt=""/>
-                <img src="public/img/emoteicon/1f3a5.png" data-key='1f3a5' alt=""/>
-                <img src="public/img/emoteicon/1f3a5.png" data-key='1f3a5' alt=""/>
+                <div class="row flex-box-center">
+                    <img src="public/img/icons/em_1.png" data-key="em_1" data-name="开心" alt="">
+                    <img src="public/img/icons/em_2.png" data-key="em_2" data-name="大笑" alt="">
+                    <img src="public/img/icons/em_3.png" data-key="em_3" data-name="脸红" alt="">
+                    <img src="public/img/icons/em_4.png" data-key="em_4" data-name="满意" alt="">
+                    <img src="public/img/icons/em_5.png" data-key="em_5" data-name="漏齿笑" alt="">
+                    <img src="public/img/icons/em_6.png" data-key="em_6" data-name="戏弄" alt="">
+                    <img src="public/img/icons/em_7.png" data-key="em_7" data-name="汗" alt="">
+                    <img src="public/img/icons/em_8.png" data-key="em_8" data-name="呸" alt="">
+                    <img src="public/img/icons/em_9.png" data-key="em_9" data-name="担心" alt="">
+                    <img src="public/img/icons/em_10.png" data-key="em_10" data-name="悔恨" alt="">
+                </div>
+                <div class="row flex-box-center">
+                    <img src="public/img/icons/em_11.png" data-key="em_11" data-name="哭" alt="">
+                    <img src="public/img/icons/em_12.png" data-key="em_12" data-name="笑抽" alt="">
+                    <img src="public/img/icons/em_13.png" data-key="em_13" data-name="恐惧" alt="">
+                    <img src="public/img/icons/em_14.png" data-key="em_14" data-name="生气" alt="">
+                    <img src="public/img/icons/em_15.png" data-key="em_15" data-name="强" alt="">
+                    <img src="public/img/icons/em_16.png" data-key="em_16" data-name="OK" alt="">
+                    <img src="public/img/icons/em_17.png" data-key="em_17" data-name="胜利" alt="">
+                    <span class="space"></span>
+                    <span class="space"></span>
+                    <span class="space"></span>
+                </div>
+
             </div>
         </div>
-        <div class="right-content-flower just-in-touch" v-flower v-show="imControls.route=='flower'" style="display: none;">
+        <div class="right-content-flower just-in-touch" v-flower v-show="route=='im'&&imControls.route=='flower'" style="display: none;">
             <!--<div class="head">-->
                 <!--献花-->
             <!--</div>-->
             <div class="content-im" v-select-one data-selectid="flower">
-                <div class="flower">
+                <div class="flower" @click="setFlowerType(0)">
                     <div class="flower-item-wrap flex-box-cneter">
                         <img src="public/img/flower1.png" style='height: 44px;' alt=""/>
                     </div>
@@ -186,7 +141,7 @@
                     <img class="select nos" src='public/img/noselect.png' style="height: 20px;" alt=""/>
                     <img class="select ons" src='public/img/select.png' style="height: 20px;" alt=""/>
                 </div>
-                <div class="flower">
+                <div class="flower" @click="setFlowerType(1)">
                     <div class="flower-item-wrap flex-box-cneter">
                         <img src="public/img/flower2.png" alt=""/>
                     </div>
@@ -199,7 +154,7 @@
                     <img class="select nos" src='public/img/noselect.png' style="height: 20px;" alt=""/>
                     <img class="select ons" src='public/img/select.png' style="height: 20px;" alt=""/>
                 </div>
-                <div class="flower">
+                <div class="flower" @click="setFlowerType(2)">
                     <div class="flower-item-wrap flex-box-cneter">
                         <img src="public/img/flower3.png" alt=""/>
                     </div>
@@ -214,10 +169,10 @@
             </div>
             <div class="foot">
                 <div class="gold-num">
-                    <p>余额：<span>1586</span>金币</p>
+                    <p>余额：<span>{{money}}</span>金币</p>
                 </div>
                 <div class="send-control">
-                    <el-button class="flower-confirm" @click="sendFlower()">
+                    <el-button class="flower-confirm" >
                         确定
                     </el-button>
                     <el-button  class="flower-confirm" @click="sendFlower()">
@@ -226,7 +181,8 @@
                 </div>
             </div>
         </div>
-        <div class="right-content right-content-question-1" v-if="route=='question1'">
+
+        <div class="right-content right-content-question-1" v-if="route=='question1'" v-cloak>
             <div class="head">
                 互动题
             </div>
@@ -246,7 +202,7 @@
                 </div>
             </div>
         </div>
-        <div class="right-content right-content-question-2" v-if="route=='question2'">
+        <div class="right-content right-content-question-2" v-if="route=='question2'" v-cloak>
             <div class="head">
                 互动题
             </div>
@@ -267,13 +223,66 @@
             </div>
         </div>
 
-        <div class="alert alert-hongbao" v-show="alert=='hongbao'" style="display: none;">
-            <div class="content-hongbao">
-                <img src="" alt=""/>
-                红包图片
-                <div class="hongbao-button" @click="switchAlert('')">
-                    <el-button>领取</el-button>
-                </div>
+        <div class="alert alert-hongbao not-select" v-show="alert=='hongbao'" style="display: none;">
+            <div class="content">
+                <img src="public/img/lingquhongbao.png" alt=""/>
+                <button class="close-btn" @click="switchAlert('')">
+                    <img src="public/img/close-btn.png" alt="">
+                </button>
+                <button  class="lingquhongbao" @click="switchAlert('')">领取</button>
+            </div>
+        </div>
+        <div class="alert alert-hongbao not-select" v-show="alert=='lingdaohongbao'" style="display: none;">
+            <div class="content">
+                <img src="public/img/lingdaohongbao.png" alt=""/>
+                <button class="close-btn" @click="switchAlert('')">
+                    <img src="public/img/close-btn.png" alt="">
+                </button>
+                <span>+{{alertNum}}</span>
+                <!--<button  class="lingquhongbao" @click="switchAlert('')">领取</button>-->
+            </div>
+        </div>
+        <div class="alert alert-tingdongleme not-select" v-show="alert=='tingdongleme'" style="display: none;">
+            <div class="content">
+                <img src="public/img/tingdongleme.png" alt=""/>
+                <button class="close-btn" @click="switchAlert('')">
+                    <img src="public/img/close-btn.png" alt="">
+                </button>
+                <!--<span>+{{alertNum}}</span>-->
+                <button  class="meitingdong" @click="switchAlert('')">没听懂</button>
+                <button  class="tingdongle" @click="switchAlert('')">听懂了</button>
+            </div>
+        </div>
+
+        <div class="alert alert-dacuole" v-show="alert=='dacuole'" style="display: none;">
+            <div class="content">
+                <img alt="" src="/public/img/dacuole.png"/>
+                <!--红包图片-->
+                <!--<div class="hongbao-button" @click="switchAlert('')">-->
+                    <!--<el-button>领取</el-button>-->
+                <!--</div>-->
+            </div>
+        </div>
+        <div class="alert alert-daduile" v-show="alert=='daduile'" style="display: none;">
+            <div class="content">
+                <img alt="" src="/public/img/daduile.png"/>
+            </div>
+        </div>
+        <div class="alert alert-daduilejinbi" v-show="alert=='daduilejinbi'" style="display: none;">
+            <div class="content">
+                <img alt="" src="/public/img/daduilejinbi.png"/>
+                <span>{{alertNum}}</span>
+            </div>
+        </div>
+        <div class="alert alert-bufendadui" v-show="alert=='bufendadui'" style="display: none;">
+            <div class="content">
+                <img alt="" src="/public/img/bufendadui.png"/>
+            </div>
+        </div>
+        <div class="alert alert-bufendaduijinbi" v-show="alert=='bufendaduijinbi'" style="display: none;">
+            <div class="content">
+                <img alt="" src="/public/img/bufendaduijinbi.png"/>
+                <span>{{alertNum}}</span>
             </div>
         </div>
     </div>
@@ -295,9 +304,12 @@
 
 <!--<script src="public/js/video-controls.js"></script>-->
 <script src="public/js/im-controls.js"></script>
+<script src="public/js/video-controls.js"></script>
 <script src="public/js/touch/im-controls-touch.js"></script>
 <script src="public/js/touch/video-controls.js"></script>
 <script src="public/js/lib/hls.min.js"></script>
+<script src="public/js/barrage.js"></script>
+<script src="public/js/touch/api.js"></script>
 <script>
 //    if(Hls.isSupported()) {
 //        var video = document.getElementById('video');

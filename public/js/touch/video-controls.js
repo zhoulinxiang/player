@@ -4,7 +4,7 @@ var videoComponents=appParam.videoComponents;
 var videoDatas = app.videoControls;
 
 var timeoutFlag=null;
-var videoControls = {
+$.extend(videoControls,{
     bindEvents: function () {
         timeoutFlag=setTimeout(function(){
             videoDatas.showtTitle=false;
@@ -27,5 +27,5 @@ var videoControls = {
         });
     }
 
-};
+});
 videoControls.bindEvents();
