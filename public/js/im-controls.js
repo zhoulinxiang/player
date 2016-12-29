@@ -66,7 +66,7 @@ var imControls = {
     },
     //替换表情显示
     replaceExpress: function (text) {
-        return text.replace(/\[e\](\w+)\[e\]/g, '<img src="'+appParam.url+'video/live/img/icons/$1.png"/>');
+        return text.replace(/\[e\](\w+)\[e\]/g, '<img src="'+appParam.url+'live/img/icons/$1.png"/>');
     },
     //选择表情
     selectExpression: function (e) {
