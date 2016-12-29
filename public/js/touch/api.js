@@ -145,6 +145,13 @@ var api = {
      */
     setMoney: function (num) {
         app.money = num;
+    },
+    /**
+     * 设置静态资源域名
+     * @param path
+     */
+    setUrlPath:function(path){
+        appParam.url=path;
     }
 
 

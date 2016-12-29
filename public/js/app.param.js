@@ -2,6 +2,7 @@ var appParam = appParam || {};
 appParam.videoComponents={};
 appParam.imComponents={};
 appParam.appDatas={
+    url:'',//域名
     voice: 50,
     //    im,flower,question1
     route: 'im',

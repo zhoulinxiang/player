@@ -14,9 +14,9 @@ Barrage.prototype = {
         var barrageContent = this.cfg.content;
 
         var flowers=[
-            '<img src="public/img/flower1.png">',
-            '<img src="public/img/flower2.png">',
-            '<img src="public/img/flower3.png">',
+            '<img src="'+appParam.url+'video/live/img/flower1.png">',
+            '<img src="'+appParam.url+'video/live/img/flower2.png">',
+            '<img src="'+appParam.url+'video/live/img/flower3.png">',
         ]
         this.cfg.bindingBox = $('<div class="barrage">' +flowers[flowerType]+barrageContent + '</div>');
 
