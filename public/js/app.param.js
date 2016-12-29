@@ -1,8 +1,10 @@
 var appParam = appParam || {};
 appParam.videoComponents={};
 appParam.imComponents={};
+appParamNoVue={};
+appParamNoVue.url='';//静态资源域名
 appParam.appDatas={
-    url:'',//域名
+    // url:'',//域名
     voice: 50,
     //    im,flower,question1
     route: 'im',

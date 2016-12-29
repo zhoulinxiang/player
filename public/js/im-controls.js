@@ -30,6 +30,7 @@ var imControls = {
         message.text = this.HTMLEnCode(message.text)
         message.text = this.replaceExpress(message.text);
         console.log(message.text);
+        var messages=app.messages;
         if (imDatas.messages.length >= 60) {
             imDatas.messages.shift();
             imDatas.messages.push(message);
@@ -66,7 +67,7 @@ var imControls = {
     },
     //替换表情显示
     replaceExpress: function (text) {
-        return text.replace(/\[e\](\w+)\[e\]/g, '<img src="'+appParam.url+'live/img/icons/$1.png"/>');
+        return text.replace(/\[e\](\w+)\[e\]/g, '<img src="'+appParamNoVue.url+'live/img/icons/$1.png"/>');
     },
     //选择表情
     selectExpression: function (e) {

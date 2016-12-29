@@ -151,7 +151,7 @@ var api = {
      * @param path
      */
     setUrlPath:function(path){
-        appParam.url=path;
+        appParamNoVue.url=path;
     }
 
 

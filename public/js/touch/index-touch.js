@@ -130,6 +130,11 @@ var app = new Vue({
         },
         'videoControls.setPlayedTime':function(nv,ov){
             videoComponents.video[0].currentTime=nv;
+        },
+        'imControls.messages':function (nv,ol) {
+            console.log(nv);
+            console.log(ol);
+
         }
 
     },

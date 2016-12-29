@@ -48,7 +48,8 @@
                 </div>
             </div>
             <div class="content-im">
-                <div v-for="item in imControls.messages">
+                <!--<div v-for="item in imControls.messages" >-->
+                <div v-for="item in imControls.messages" >
                     <p>
                         <span class="" v-if="item.type==3">{{item.name}}:</span>
                         <span class="red" v-if="item.type==4">{{item.name}}:</span>
@@ -290,7 +291,7 @@
 </body>
 <script src="public/js/lib/jquery-1.11.3.min.js"></script>
 <!-- 先引入 Vue -->
-<script src="public/js/lib/vue.min.js"></script>
+<script src="public/js/lib/vue-2.16.min.js"></script>
 <!-- 引入组件库 -->
 <script src="public/js/lib/element-index.js"></script>
 <!-- 引入组件库 -->
